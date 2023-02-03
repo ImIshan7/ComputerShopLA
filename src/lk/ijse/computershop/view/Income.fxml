@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="IncomeID" prefHeight="617.0" prefWidth="1015.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.IncomeController">
+   <children>
+      <Label layoutX="95.0" layoutY="42.0" prefHeight="55.0" prefWidth="178.0" styleClass="specialTextColour" stylesheets="@../css/MetropolitantColourSchema.css" text="        REPORT">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="24.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-graph-report-96.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="39.0" layoutY="122.0" prefHeight="363.0" prefWidth="945.0" styleClass="circleUpdate" stylesheets="@../css/style.css" textFill="WHITE" />
+      <JFXButton buttonType="RAISED" layoutX="99.0" layoutY="157.0" onAction="#btnPlaceOrderOnAction" prefHeight="136.0" prefWidth="259.0" styleClass="topPaneBackground4" stylesheets="@../css/MetropolitantColourSchema.css" text="              PLACE ORDER REPORT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="616.0" layoutY="161.0" onAction="#btnCustomerOnAction" prefHeight="136.0" prefWidth="240.0" styleClass="topPaneBackground4" stylesheets="@../css/MetropolitantColourSchema.css" text="               CUSTOMER REPORT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="97.0" layoutY="318.0" onAction="#btnSupplierOnAction" prefHeight="136.0" prefWidth="259.0" styleClass="topPaneBackground4" stylesheets="@../css/MetropolitantColourSchema.css" text="          SUPPLIER REPORT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="118.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-total-sales-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="640.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-graph-report-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="127.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-overview-64.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="616.0" layoutY="328.0" onAction="#btnProductOnAction" prefHeight="136.0" prefWidth="240.0" styleClass="topPaneBackground4" stylesheets="@../css/MetropolitantColourSchema.css" text="             PRODUCT REPORT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="48.0" fitWidth="48.0" layoutX="640.0" layoutY="372.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-product-64%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="64.0" layoutX="616.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/computer.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="676.0" layoutY="23.0" prefHeight="39.0" prefWidth="259.0" text="GEO TEC COMPUTERS">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="676.0" layoutY="50.0" prefHeight="39.0" prefWidth="259.0" text="             GALLE">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="770.0" layoutY="524.0" onAction="#btnBackOnAction" prefHeight="48.0" prefWidth="129.0" styleClass="circle4" stylesheets="@../css/style.css" text="    BACK">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="777.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-logout-rounded-left-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

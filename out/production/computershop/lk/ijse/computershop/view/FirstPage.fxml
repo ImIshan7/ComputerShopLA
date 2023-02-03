@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="First" prefHeight="768.0" prefWidth="1366.0" styleClass="specialText" stylesheets="@../css/MetropolitantColourSchema.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.FirstPageController">
+   <children>
+      <AnchorPane layoutX="55.0" layoutY="53.0" prefHeight="604.0" prefWidth="535.0" styleClass="circleUpdate" stylesheets="@../css/style.css">
+         <children>
+            <Label layoutX="146.0" layoutY="111.0" prefHeight="74.0" prefWidth="328.0" text="WELCOME ">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="172.0" prefHeight="74.0" prefWidth="438.0" text="GEO TEC COMPUTERS">
+               <font>
+                  <Font name="System Bold" size="41.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="169.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/computer.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="747.0" layoutY="53.0" prefHeight="604.0" prefWidth="535.0" styleClass="circleSerach" stylesheets="@../css/style.css">
+         <children>
+            <JFXButton layoutX="162.0" layoutY="472.0" onAction="#btnReceptionOnClick" prefHeight="81.0" prefWidth="194.0" styleClass="backgroundcolor" stylesheets="@../css/MetropolitantColourSchema.css" text="         RECEPTION" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="162.0" layoutY="349.0" onAction="#btnManagerOnAction" prefHeight="81.0" prefWidth="194.0" styleClass="backgroundcolor" stylesheets="@../css/MetropolitantColourSchema.css" text="        MANAGER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </JFXButton>
+            <ImageView fitHeight="56.0" fitWidth="54.0" layoutX="172.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-front-desk-100.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="64.0" fitWidth="63.0" layoutX="168.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-businessman-96.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="81.0" fitWidth="117.0" layoutX="410.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/desktop.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="48.0" layoutY="205.0" prefHeight="43.0" prefWidth="467.0" text="Please select the option and describes you ">
+               <font>
+                  <Font name="Arial Black" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="79.0" layoutY="268.0" prefHeight="43.0" prefWidth="407.0" text="                   I'm a">
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="81.0" fitWidth="117.0" layoutX="24.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-workstation-96.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

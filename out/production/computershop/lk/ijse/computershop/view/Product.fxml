@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ProductID" prefHeight="617.0" prefWidth="1015.0" styleClass="circleWhite" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.ProductController">
+   <children>
+      <Label layoutX="114.0" layoutY="18.0" prefHeight="53.0" prefWidth="205.0" styleClass="specialTextColour" stylesheets="@../css/MetropolitantColourSchema.css" text="     PRODUCT">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="14.0" layoutY="89.0" prefHeight="516.0" prefWidth="368.0" styleClass="circleUpdate" stylesheets="@../css/style.css">
+         <children>
+            <Label layoutX="23.0" layoutY="14.0" prefHeight="42.0" prefWidth="131.0" text="Product ID">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtID" layoutX="21.0" layoutY="46.0" onKeyReleased="#txtPrdIDKeyTypeOnAction" prefHeight="35.0" prefWidth="293.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="23.0" layoutY="106.0" prefHeight="42.0" prefWidth="131.0" text="Name">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtName" layoutX="21.0" layoutY="148.0" prefHeight="36.0" prefWidth="293.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="23.0" layoutY="205.0" prefHeight="42.0" prefWidth="131.0" text="Unit Price">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtUnitPrice" layoutX="21.0" layoutY="247.0" prefHeight="36.0" prefWidth="293.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="23.0" layoutY="307.0" prefHeight="42.0" prefWidth="131.0" text="Description">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtDesc" layoutX="21.0" layoutY="349.0" prefHeight="36.0" prefWidth="293.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="23.0" layoutY="404.0" prefHeight="42.0" prefWidth="131.0" text="QTY">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtqty" layoutX="21.0" layoutY="446.0" prefHeight="36.0" prefWidth="293.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label fx:id="lblPrdID" layoutX="21.0" layoutY="94.0" prefHeight="21.0" prefWidth="293.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblProduct" layoutX="403.0" layoutY="130.0" prefHeight="357.0" prefWidth="601.0" styleClass="circle34" stylesheets="@../css/style.css">
+        <columns>
+          <TableColumn fx:id="ColID" prefWidth="85.0" text="Prd ID" />
+          <TableColumn fx:id="ColName" prefWidth="123.0" text="Name" />
+            <TableColumn fx:id="ColPrice" prefWidth="128.0" text="Unit Price" />
+            <TableColumn fx:id="ColDESC" prefWidth="170.0" text="Description" />
+            <TableColumn fx:id="ColQTY" prefWidth="94.0" text="QTY" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="421.0" layoutY="520.0" onAction="#btnAddOnAction" prefHeight="53.0" prefWidth="131.0" styleClass="circleAdd" stylesheets="@../css/style.css" text="     ADD" textFill="#fffafa">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="721.0" layoutY="521.0" onAction="#btnDeleteOnAction" prefHeight="53.0" prefWidth="131.0" styleClass="circleDelete" stylesheets="@../css/style.css" text="      DELETE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="874.0" layoutY="520.0" onAction="#btnBackOnAction" prefHeight="53.0" prefWidth="120.0" styleClass="circle4" stylesheets="@../css/style.css" text="      BACK">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="576.0" layoutY="521.0" onAction="#btnUpdateOnAction" prefHeight="53.0" prefWidth="131.0" styleClass="circleUpdate" stylesheets="@../css/style.css" text="        UPDATE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="433.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/add%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="587.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/real-time.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="732.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/add-to-basket.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="883.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-logout-rounded-left-96.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="53.0" layoutX="55.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-product-64%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="46.0" layoutX="729.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/computer.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="780.0" layoutY="18.0" prefHeight="35.0" prefWidth="205.0" text="GEO TEC COMPUTERS">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="395.0" layoutY="90.0" prefHeight="35.0" prefWidth="112.0" text="SEARCH">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="txtSerchID" layoutX="469.0" layoutY="71.0" onKeyPressed="#KeyPressID" prefHeight="36.0" prefWidth="193.0" />
+      <ImageView fitHeight="28.0" fitWidth="36.0" layoutX="634.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-search.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

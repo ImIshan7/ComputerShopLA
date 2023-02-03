@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="GeoTecID" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.GeoTecComputerController">
+   <children>
+      <AnchorPane layoutX="4.0" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../css/MetropolitantColourSchema.css">
+         <children>
+            <Label layoutX="310.0" layoutY="290.0" prefHeight="138.0" prefWidth="1011.0" text="GEO TEC COMPUTERS">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="60.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="236.0" fitWidth="219.0" layoutX="557.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/computer.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="558.0" layoutY="384.0" prefHeight="123.0" prefWidth="250.0" text="GALLE">
+               <font>
+                  <Font name="Bookman Old Style Bold" size="60.0" />
+               </font>
+            </Label>
+            <ImageView disable="true" fitHeight="69.0" fitWidth="160.0" layoutX="632.0" layoutY="479.0" pickOnBounds="true" preserveRatio="true" styleClass="specialTextColour">
+               <image>
+                  <Image url="@../assets/icons8-dots-loading%20(3).gif" />
+               </image>
+            </ImageView>
+         </children>
+         <styleClass>
+            <String fx:value="title-text" />
+            <String fx:value="specialTextColour" />
+         </styleClass>
+      </AnchorPane>
+   </children>
+</AnchorPane>

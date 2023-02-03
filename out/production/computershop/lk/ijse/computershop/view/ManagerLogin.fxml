@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ManagerLogin" prefHeight="768.0" prefWidth="1366.0" styleClass="specialText" stylesheets="@../css/MetropolitantColourSchema.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.ManagerLoginController">
+   <children>
+      <AnchorPane fx:id="LoginID" layoutX="521.0" layoutY="35.0" prefHeight="649.0" prefWidth="622.0" styleClass="circleWhite2" stylesheets="@../css/style.css">
+         <children>
+            <ImageView fitHeight="144.0" fitWidth="166.0" layoutX="85.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/computer.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="76.0" layoutY="163.0" prefHeight="74.0" prefWidth="373.0" text="WELCOME BACK,">
+               <font>
+                  <Font name="Arial Black" size="34.0" />
+               </font>
+            </Label>
+            <Label layoutX="85.0" layoutY="228.0" prefHeight="41.0" prefWidth="280.0" text="Sign In To Continue">
+               <font>
+                  <Font name="Arial Black" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="180.0" layoutY="313.0" prefHeight="31.0" prefWidth="144.0" text="User Name" textFill="#0e15d7">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="104.0" layoutY="329.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-user-male.gif" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="txtUserName" layoutX="168.0" layoutY="344.0" onAction="#btnUserOnAction" prefHeight="31.0" prefWidth="274.0" styleClass="circleUpdate" stylesheets="@../css/style.css" />
+            <Label layoutX="174.0" layoutY="428.0" prefHeight="31.0" prefWidth="144.0" text="PassWord" textFill="#0a2bd3">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="104.0" layoutY="444.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-lock.gif" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="txtPassword" layoutX="168.0" layoutY="458.0" onAction="#btnPasswordOnAction" prefHeight="31.0" prefWidth="274.0" styleClass="circleUpdate" stylesheets="@../css/style.css" />
+            <JFXButton fx:id="signID" buttonType="RAISED" layoutX="232.0" layoutY="549.0" onAction="#btnSignOnAction" prefHeight="41.0" prefWidth="116.0" styleClass="circleUpdate" stylesheets="@../css/MetropolitantColourSchema.css" text="     SIGN IN">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="LoginIDA" prefHeight="768.0" prefWidth="458.0" styleClass="topPaneBackground3" stylesheets="@../css/MetropolitantColourSchema.css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="113.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/computer.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="45.0" layoutY="274.0" prefHeight="83.0" prefWidth="299.0" text="GEO TEC COMPUTERS" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="145.0" layoutY="315.0" prefHeight="83.0" prefWidth="299.0" text="GALLE" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="23.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="1203.0" layoutY="32.0" onAction="#btnExistOnAction" prefHeight="41.0" prefWidth="144.0" styleClass="topPaneBackground2" stylesheets="@../css/MetropolitantColourSchema.css" text="         EXIST" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="31.0" fitWidth="33.0" layoutX="1215.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-logout-64.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

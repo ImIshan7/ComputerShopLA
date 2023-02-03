@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="OrderID" prefHeight="617.0" prefWidth="1015.0" styleClass="circleWhite" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.OrderPlaceController">
+   <children>
+      <Label layoutX="363.0" layoutY="14.0" prefHeight="50.0" prefWidth="255.0" styleClass="specialTextColour" stylesheets="@../css/MetropolitantColourSchema.css" text="    PLACE ORDER">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="21.0" layoutY="91.0" prefHeight="268.0" prefWidth="975.0" styleClass="circleUpdate">
+         <children>
+            <Label layoutX="24.0" layoutY="22.0" prefHeight="27.0" prefWidth="163.0" text="Customer Details" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbCusID" layoutX="24.0" layoutY="75.0" onAction="#cmbCusID" prefHeight="25.0" prefWidth="150.0" stylesheets="@../css/style.css" unFocusColor="BLACK" />
+            <JFXTextArea fx:id="txtCusName" layoutX="233.0" layoutY="61.0" prefHeight="36.0" prefWidth="170.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="txtCusContact" layoutX="754.0" layoutY="65.0" prefHeight="36.0" prefWidth="170.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="txtCusAddress" layoutX="472.0" layoutY="61.0" prefHeight="45.0" prefWidth="182.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <Label layoutX="24.0" layoutY="165.0" prefHeight="27.0" prefWidth="163.0" text="Product Details" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <JFXComboBox fx:id="cmbPrdID" layoutX="21.0" layoutY="224.0" onAction="#CmbPrdIDOnAction" prefHeight="25.0" prefWidth="156.0" stylesheets="@../css/style.css" unFocusColor="BLACK" />
+            <Label layoutX="233.0" layoutY="27.0" prefHeight="17.0" prefWidth="120.0" text="NAME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="472.0" layoutY="27.0" prefHeight="17.0" prefWidth="120.0" text="ADDRESS" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="754.0" layoutY="27.0" prefHeight="17.0" prefWidth="120.0" text="CONTACT" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtPrdName" layoutX="198.0" layoutY="207.0" prefHeight="36.0" prefWidth="142.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="txtPrdDESC" layoutX="375.0" layoutY="209.0" prefHeight="36.0" prefWidth="142.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="txtPrdQTY" layoutX="704.0" layoutY="209.0" prefHeight="36.0" prefWidth="90.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="txtPrdUnitPrice" layoutX="563.0" layoutY="209.0" prefHeight="36.0" prefWidth="90.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+            <Label layoutX="198.0" layoutY="170.0" prefHeight="17.0" prefWidth="120.0" text="NAME" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="375.0" layoutY="170.0" prefHeight="17.0" prefWidth="120.0" text="DESCRIPITION" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="563.0" layoutY="170.0" prefHeight="17.0" prefWidth="120.0" text="UNIT PRICE" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="704.0" layoutY="170.0" prefHeight="17.0" prefWidth="120.0" text="QTY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="840.0" layoutY="170.0" prefHeight="17.0" prefWidth="120.0" text="ORDER QTY" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtOrderQTY" layoutX="840.0" layoutY="208.0" prefHeight="43.0" prefWidth="100.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font></JFXTextArea>
+         </children>
+         <stylesheets>
+            <URL value="@../css/style.css" />
+            <URL value="@../css/MetropolitantColourSchema.css" />
+         </stylesheets>
+      </AnchorPane>
+      <TableView fx:id="tblOrderPlace" layoutX="24.0" layoutY="372.0" prefHeight="232.0" prefWidth="664.0" styleClass="circle34" stylesheets="@../css/style.css">
+        <columns>
+          <TableColumn fx:id="ColPrdID" prefWidth="84.0" text="Prd ID" />
+          <TableColumn fx:id="ColDESC" prefWidth="140.0" text="Description" />
+            <TableColumn fx:id="ColUnitPrice" prefWidth="106.0" text="Unit Price" />
+            <TableColumn fx:id="ColQTY" prefWidth="115.0" text="Order QTY" />
+            <TableColumn fx:id="ColTotal" prefWidth="131.0" text="Total" />
+            <TableColumn fx:id="ColOption" prefWidth="86.0" text="Option" />
+            <TableColumn fx:id="ColQTY11" prefWidth="177.0" text="Order QTY" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="792.0" layoutY="405.0" onAction="#btnAddOnAction" prefHeight="50.0" prefWidth="142.0" ripplerFill="WHITE" styleClass="circleAdd" stylesheets="@../css/style.css" text="     ADD" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="863.0" layoutY="478.0" onAction="#btnBuyOnAction" prefHeight="50.0" prefWidth="142.0" styleClass="circleSerach" stylesheets="@../css/style.css" text="    BUY" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="808.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/shopping-cart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="879.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/purchase.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="708.0" layoutY="554.0" prefHeight="36.0" prefWidth="100.0" text="TOTAL">
+         <font>
+            <Font name="Arial Black" size="19.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTotal" layoutX="781.0" layoutY="547.0" prefHeight="50.0" prefWidth="215.0">
+         <font>
+            <Font name="Arial Black" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="49.0" fitWidth="57.0" layoutX="314.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-product-64.png" />
+         </image>
+      </ImageView>
+      <JFXButton buttonType="RAISED" layoutX="714.0" layoutY="478.0" onAction="#btnBackOnAction" prefHeight="49.0" prefWidth="135.0" styleClass="circle2" stylesheets="@../css/style.css" text="    BACK">
+         <font>
+            <Font name="Arial Black" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="42.0" fitWidth="49.0" layoutX="723.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-back-arrow-64.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="63.0" layoutY="56.0" prefHeight="28.0" prefWidth="100.0" text="ORDER ID">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOrderID" layoutX="153.0" layoutY="56.0" prefHeight="28.0" prefWidth="127.0">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbldate" layoutX="794.0" layoutY="14.0" prefHeight="28.0" prefWidth="170.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbltime" layoutX="794.0" layoutY="50.0" prefHeight="28.0" prefWidth="170.0">
+         <font>
+            <Font name="Arial Black" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="758.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-calendar.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="36.0" fitWidth="34.0" layoutX="758.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-clock.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

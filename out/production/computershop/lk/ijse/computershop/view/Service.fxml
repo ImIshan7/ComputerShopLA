@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="ServiceID" prefHeight="617.0" prefWidth="1015.0" styleClass="circleWhite" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.computershop.controller.ServiceContoller">
+   <children>
+      <Label layoutX="140.0" layoutY="68.0" prefHeight="57.0" prefWidth="173.0" styleClass="specialTextColour" stylesheets="@../css/MetropolitantColourSchema.css" text="   SERVICE">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="25.0" layoutY="135.0" prefHeight="451.0" prefWidth="374.0" styleClass="circleUpdate" stylesheets="@../css/style.css">
+         <children>
+            <Label layoutX="28.0" layoutY="26.0" prefHeight="39.0" prefWidth="137.0" text="Service ID">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtSerID" layoutX="28.0" layoutY="55.0" onKeyReleased="#txtSerIDKeyTypeOnAction" prefHeight="39.0" prefWidth="271.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="28.0" layoutY="139.0" prefHeight="39.0" prefWidth="137.0" text="Employee ID">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtEmID" layoutX="28.0" layoutY="171.0" onKeyReleased="#txtEmIDKeyAction" prefHeight="39.0" prefWidth="271.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="28.0" layoutY="248.0" prefHeight="39.0" prefWidth="137.0" text="Descripion">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtDESC" layoutX="28.0" layoutY="294.0" prefHeight="39.0" prefWidth="271.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label layoutX="28.0" layoutY="353.0" prefHeight="39.0" prefWidth="137.0" text="Price">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <JFXTextArea fx:id="txtPrice" layoutX="28.0" layoutY="392.0" prefHeight="39.0" prefWidth="271.0" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font></JFXTextArea>
+            <Label fx:id="lblServiceId" layoutX="28.0" layoutY="103.0" prefHeight="23.0" prefWidth="271.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblEmID" layoutX="28.0" layoutY="218.0" prefHeight="23.0" prefWidth="271.0" textFill="RED">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tblService" layoutX="430.0" layoutY="154.0" prefHeight="369.0" prefWidth="571.0" styleClass="circle34" stylesheets="@../css/style.css">
+        <columns>
+          <TableColumn fx:id="ColSerID" prefWidth="90.0" text="Ser ID" />
+          <TableColumn fx:id="ColEmID" prefWidth="117.0" text="Em ID" />
+            <TableColumn fx:id="ColDESC" prefWidth="238.0" text="Descripion" />
+            <TableColumn fx:id="ColPrice" prefWidth="125.0" text="Price" />
+        </columns>
+      </TableView>
+      <JFXButton buttonType="RAISED" layoutX="439.0" layoutY="543.0" onAction="#btnAddOnAction" prefHeight="49.0" prefWidth="137.0" styleClass="circleAdd" stylesheets="@../css/style.css" text="      ADD" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="662.0" layoutY="543.0" onAction="#btnUpdateOnAction" prefHeight="49.0" prefWidth="137.0" styleClass="circleUpdate" stylesheets="@../css/style.css" text="      UPDATE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="852.0" layoutY="543.0" onAction="#btnBackOnAction" prefHeight="49.0" prefWidth="137.0" styleClass="circle2" stylesheets="@../css/style.css" text="      BACK">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="453.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/cloud-computing.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="671.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/update.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="39.0" fitWidth="43.0" layoutX="870.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-logout-rounded-left-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="57.0" fitWidth="71.0" layoutX="76.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-hardworking-64.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="49.0" fitWidth="48.0" layoutX="758.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/computer.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="814.0" layoutY="31.0" prefHeight="32.0" prefWidth="191.0" text="GEO TEC COMPUTERS">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="412.0" layoutY="109.0" prefHeight="32.0" prefWidth="82.0" text="SEARCH">
+         <font>
+            <Font name="Arial Black" size="15.0" />
+         </font>
+      </Label>
+      <JFXTextArea fx:id="txtSID" layoutX="499.0" layoutY="96.0" prefHeight="39.0" prefWidth="236.0" />
+      <ImageView fitHeight="49.0" fitWidth="48.0" layoutX="686.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-search.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
