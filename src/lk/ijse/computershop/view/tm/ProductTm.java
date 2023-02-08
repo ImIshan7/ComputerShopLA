@@ -2,68 +2,71 @@ package lk.ijse.computershop.view.tm;
 
 public class ProductTm {
 
-    private String PrdID;
-    private String Name;
-    private Double Unit_Price;
-    private String Description;
-    private int QTY;
+    private String prdID;
+    private String name;
+    private Double unit_Price;
+    private String description;
+    private int qty;
 
-    public ProductTm(String prdID, String name, Double unit_Price, String description, int QTY) {
-        PrdID = prdID;
-        Name = name;
-        Unit_Price = unit_Price;
-        Description = description;
-        this.QTY = QTY;
+    public ProductTm() {
+    }
+
+    public ProductTm(String prdID, String name, Double unit_Price, String description, int qty) {
+        this.prdID = prdID;
+        this.name = name;
+        this.unit_Price = unit_Price;
+        this.description = description;
+        this.qty = qty;
     }
 
     public String getPrdID() {
-        return PrdID;
+        return prdID;
     }
 
     public void setPrdID(String prdID) {
-        PrdID = prdID;
+        this.prdID = prdID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public Double getUnit_Price() {
-        return Unit_Price;
+        return unit_Price;
     }
 
     public void setUnit_Price(Double unit_Price) {
-        Unit_Price = unit_Price;
+        this.unit_Price = unit_Price;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-    public int getQTY() {
-        return QTY;
+    public int getQty() {
+        return qty;
     }
 
-    public void setQTY(int QTY) {
-        this.QTY = QTY;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     @Override
     public String toString() {
         return "ProductTm{" +
-                "PrdID='" + PrdID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Unit_Price=" + Unit_Price +
-                ", Description='" + Description + '\'' +
-                ", QTY=" + QTY +
+                "prdID='" + prdID + '\'' +
+                ", name='" + name + '\'' +
+                ", unit_Price=" + unit_Price +
+                ", description='" + description + '\'' +
+                ", qty=" + qty +
                 '}';
     }
 }

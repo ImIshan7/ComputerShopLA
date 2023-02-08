@@ -4,7 +4,7 @@ import lk.ijse.computershop.bo.custom.EmployBO;
 import lk.ijse.computershop.dao.DAOFactory;
 import lk.ijse.computershop.dao.custom.EmployDAO;
 import lk.ijse.computershop.dto.EmployDTO;
-import lk.ijse.computershop.to.Employ;
+import lk.ijse.computershop.entity.Employ;
 
 
 import java.sql.SQLException;
@@ -16,28 +16,22 @@ public class EmployBOImpl implements EmployBO {
 
     @Override
     public ArrayList<EmployDTO> getAllEmploy() throws SQLException, ClassNotFoundException {
-            ArrayList<Employ> allEmploy = employDAO.getAll();
-            ArrayList<EmployDTO> allData = new ArrayList<>();
-            for ( Employ e : allEmploy){
-                allData.add(new EmployDTO(e.getEMID(),e.getName(),e.getAddress(),e.getContact()));
-            }
-            return allData;
+        return employDAO.getAll();
+
     }
 
     @Override
     public boolean addEmploy(EmployDTO dto) throws SQLException, ClassNotFoundException {
-        return employDAO.add(new Employ(dto.getEMID(),dto.getName(),dto.getAddress(),dto.getContact()));
+        return employDAO.add(new Employ(dto.geteMID(),dto.getName(),dto.getAddress(),dto.getContact()));
     }
 
     @Override
     public boolean updateEmploy(EmployDTO dto) throws SQLException, ClassNotFoundException {
-        return employDAO.update(new Employ(dto.getEMID(),dto.getName(),dto.getAddress(),dto.getContact()));
+        return employDAO.update(new Employ(dto.geteMID(),dto.getName(),dto.getAddress(),dto.getContact()));
     }
 
     @Override
-    public  Employ searchEmploy(String EMID) throws SQLException, ClassNotFoundException {
-        //Employ e = employDAO.search(EMID);
-       // return employDAO.search(e.getEMID(),e.getName(),e.getAddress(),e.getContact());
+    public  EmployDTO searchEmploy(String EMID) throws SQLException, ClassNotFoundException {
 
         return employDAO.search(EMID);
     }

@@ -1,60 +1,60 @@
 package lk.ijse.computershop.dto;
 
 public class CustomerDTO {
-    private String ID;
-    private String Name;
-    private String Address;
-    private String Contact;
+    private String id;
+    private String name;
+    private String address;
+    private String contact;
 
     public CustomerDTO() {
     }
 
-    public CustomerDTO(String ID, String name, String address, String contact) {
-        this.ID = ID;
-        Name = name;
-        Address = address;
-        Contact = contact;
+    public CustomerDTO(String id, String name, String address, String contact) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getContact() {
-        return Contact;
+        return contact;
     }
 
     public void setContact(String contact) {
-        Contact = contact;
+        this.contact = contact;
     }
 
     @Override
     public String toString() {
         return "CustomerDTO{" +
-                "ID='" + ID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Contact='" + Contact + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
                 '}';
     }
 }

@@ -36,11 +36,11 @@ public class OrderDetail {
         return Price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         Price = price;
     }
 
-    public int getQTY() {
+    public double getQTY() {
         return QTY;
     }
 

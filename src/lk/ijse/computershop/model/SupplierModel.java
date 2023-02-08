@@ -1,7 +1,7 @@
 package lk.ijse.computershop.model;
 
 
-import lk.ijse.computershop.to.Supplier;
+import lk.ijse.computershop.entity.Supplier;
 import lk.ijse.computershop.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ public class SupplierModel {
     public static boolean save(Supplier supplier) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO Supplier VALUES (?, ?, ?, ?, ?, ?)";
-        return CrudUtil.execute(sql,supplier.getSupID(), supplier.getName(), supplier.getAddress(), supplier.getBrand(),supplier.getUnit_Price(),supplier.getQTY());
+        return CrudUtil.execute(sql,supplier.getSupid(), supplier.getName(), supplier.getAddress(), supplier.getBrand(),supplier.getUnit_Price(),supplier.getQty());
     }
 
     public static Supplier search(String SupID) throws SQLException, ClassNotFoundException {

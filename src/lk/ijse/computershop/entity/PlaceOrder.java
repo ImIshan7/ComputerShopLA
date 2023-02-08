@@ -1,4 +1,4 @@
-package lk.ijse.computershop.to;
+package lk.ijse.computershop.entity;
 
 import java.util.ArrayList;
 

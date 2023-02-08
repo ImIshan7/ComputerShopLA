@@ -1,60 +1,61 @@
 package lk.ijse.computershop.entity;
 
-public class Employ{
-    private String EMID;
-    private String Name;
-    private String Address;
-    private String Contact;
+public class Employ {
+
+     private String emID;
+     private String name;
+     private String address;
+     private String contact;
 
     public Employ() {
     }
 
-    public Employ(String EMID, String name, String address, String contact) {
-        this.EMID = EMID;
-        Name = name;
-        Address = address;
-        Contact = contact;
+    public Employ(String eMID, String name, String address, String contact) {
+        this.emID = eMID;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
     }
 
-    public String getEMID() {
-        return EMID;
+    public String geteMID() {
+        return emID;
     }
 
-    public void setEMID(String EMID) {
-        this.EMID = EMID;
+    public void seteMID(String eMID) {
+        this.emID = eMID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getContact() {
-        return Contact;
+        return contact;
     }
 
     public void setContact(String contact) {
-        Contact = contact;
+        this.contact = contact;
     }
 
     @Override
     public String toString() {
         return "Employ{" +
-                "EMID='" + EMID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Contact='" + Contact + '\'' +
+                "eMID='" + emID + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
                 '}';
     }
 }

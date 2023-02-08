@@ -14,14 +14,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.computershop.bo.BOFactory;
 import lk.ijse.computershop.bo.custom.ProductBO;
-import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.dto.EmployDTO;
 import lk.ijse.computershop.dto.ProductDTO;
-import lk.ijse.computershop.model.ProductModel;
-import lk.ijse.computershop.to.Customer;
-import lk.ijse.computershop.to.Product;
-import lk.ijse.computershop.util.CrudUtil;
-import lk.ijse.computershop.view.tm.EmployTm;
 import lk.ijse.computershop.view.tm.ProductTm;
 
 
@@ -66,7 +59,11 @@ public class ProductController {
 
     ProductBO productBO = (ProductBO) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.PRODUCT);
 
-    public void initialize() {
+    public static ObservableList obList = FXCollections.observableArrayList();
+
+    public void initialize() throws SQLException, ClassNotFoundException {
+
+        obList.clear();
 
         ColID.setCellValueFactory(new PropertyValueFactory<>("PrdID"));
         ColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
@@ -74,14 +71,15 @@ public class ProductController {
         ColDESC.setCellValueFactory(new PropertyValueFactory<>("Description"));
         ColQTY.setCellValueFactory(new PropertyValueFactory<>("QTY"));
 
-       // AddTable(searchText);
+
+        ArrayList arrayList = productBO.getAllProduct();
+
+        for (Object e : arrayList){
+            obList.add(e);
+
+        }
+
         setPattern();
-
-        txtSerchID.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchText = newValue;
-          //  AddTable(searchText);
-
-        });
 
         tblProduct.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -93,26 +91,25 @@ public class ProductController {
                 txtName.setText(newValue.getName());
                 txtUnitPrice.setText(String.valueOf(newValue.getUnit_Price()));
                 txtDesc.setText(newValue.getDescription());
-                txtqty.setText(String.valueOf(newValue.getQTY()));
+                txtqty.setText(String.valueOf(newValue.getQty()));
             }
         } );
-        loadAllProduct();
     }
 
 
-    private void loadAllProduct(){
+    /*private void loadAllProduct(){
         tblProduct.getItems().clear();
         try {
             ArrayList<ProductDTO> allProduct = productBO.getAllProduct();
 
             for (ProductDTO c : allProduct){
-                tblProduct.getItems().add(new ProductTm(c.getPrdID(),c.getName(),c.getUnit_Price(),c.getDescription(),c.getQTY()));
+                tblProduct.getItems().add(new ProductTm(c.getPrdID(),c.getName(),c.getUnit_Price(),c.getDescription(),c.getQty()));
 
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
     public void setPattern() {
@@ -122,15 +119,6 @@ public class ProductController {
     }
 
 
-    private void setdata(ProductTm tm) {
-        txtID.setText(tm.getPrdID());
-        txtName.setText(tm.getName());
-        txtUnitPrice.setText(String.valueOf(tm.getUnit_Price()));
-        txtDesc.setText(tm.getDescription());
-        txtqty.setText(String.valueOf(tm.getQTY()));
-
-
-    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -154,13 +142,12 @@ public class ProductController {
         try {
             boolean isAdded = productBO.addProduct(new ProductDTO(PrdID,Name,Unit_Price,Description,QTY));
 
-
-          //  AddTable(searchText);
-            loadAllProduct();
-
             if (isAdded) {
-                cleardata();
                 new Alert(Alert.AlertType.CONFIRMATION, "Product Added  Successfully!").show();
+
+                cleardata();
+                initialize();
+
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something happened!").show();
             }
@@ -170,7 +157,7 @@ public class ProductController {
 
     }
 
-    private void AddTable(String text) {
+   /* private void AddTable(String text) {
 
         String searchText = "%" + text + "%";
 
@@ -198,7 +185,7 @@ public class ProductController {
         } catch (ClassNotFoundException | SQLException e) {
 
         }
-    }
+    }*/
 
     private void cleardata() {
 
@@ -254,9 +241,11 @@ public class ProductController {
 
             if (isDeleted) {
               //  AddTable(searchText);
-                loadAllProduct();
                 new Alert(Alert.AlertType.CONFIRMATION, "Product Deleted!").show();
+
                 cleardata();
+                initialize();
+
             } else new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
 
@@ -276,10 +265,12 @@ public class ProductController {
 
         boolean isUpdate = productBO.updateProduct(new ProductDTO(PrdID,Name,Unit_Price,Description,QTY));
         if (isUpdate) {
-            cleardata();
-            //AddTable(searchText);
-            loadAllProduct();
+
             new Alert(Alert.AlertType.CONFIRMATION, "Product Update Successfully!").show();
+
+            cleardata();
+            initialize();
+
         } else {
             new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
@@ -289,29 +280,29 @@ public class ProductController {
 
 
    public void KeyPressID(KeyEvent keyEvent) {
-//
-//            String code = txtSerchID.getText();
-//            String sql = "SELECT FROM Product WHERE PrdID";
-//
-//            try{  Class.forName("com.mysql.cj.jdbc.Driver");
-//                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/computershop", "root", "1234");
-//              PreparedStatement pre = connection.prepareStatement(sql);
-//
-//                pre.setObject(1,code);
-//                ResultSet executeQuery = pre.executeQuery();
-//               if(executeQuery.next()){
-//
-//                    txtID.setText(executeQuery.getString("PrdID"));
-//                    txtName.setText(executeQuery.getString("Name"));
-//                    txtUnitPrice.setText(executeQuery.getString("UnitPrice"));
-//                   txtDesc.setText(executeQuery.getString("Descripion"));
-//                }
-//
-//            } catch (SQLException e) {
-//               throw new RuntimeException(e);
-//            } catch (ClassNotFoundException e) {
-//                throw new RuntimeException(e);
-//            }
+/*
+            String code = txtSerchID.getText();
+            String sql = "SELECT FROM Product WHERE PrdID";
+
+            try{  Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/computershop", "root", "1234");
+              PreparedStatement pre = connection.prepareStatement(sql);
+
+                pre.setObject(1,code);
+                ResultSet executeQuery = pre.executeQuery();
+               if(executeQuery.next()){
+
+                    txtID.setText(executeQuery.getString("PrdID"));
+                    txtName.setText(executeQuery.getString("Name"));
+                    txtUnitPrice.setText(executeQuery.getString("UnitPrice"));
+                   txtDesc.setText(executeQuery.getString("Descripion"));
+                }
+
+            } catch (SQLException e) {
+               throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }*/
        }
 
     public void txtPrdIDKeyTypeOnAction(KeyEvent keyEvent) {
@@ -327,23 +318,7 @@ public class ProductController {
     }
 }
 
-//    public static ArrayList<Product> getAllProduct() throws ClassNotFoundException, SQLException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        ResultSet result = connection.prepareStatement("SELECT * FROM Product").executeQuery();
-//        ArrayList<Product> data = new ArrayList();
-//        while (result.next()) {
-//            Product p = new Product(
-//                    result.getString(1),
-//                    result.getString(2),
-//                    result.getDouble(3),
-//                    result.getString(4),
-//                    result.getInt(5)
-//            );
-//
-//            data.add(p);
-//        }
-//        return data;
-//    }
+
 
 
 

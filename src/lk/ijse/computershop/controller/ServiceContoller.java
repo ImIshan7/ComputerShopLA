@@ -3,6 +3,8 @@ package lk.ijse.computershop.controller;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,13 +20,9 @@ import javafx.stage.Stage;
 import lk.ijse.computershop.bo.BOFactory;
 import lk.ijse.computershop.bo.custom.ServiceBO;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.dto.EmployDTO;
 import lk.ijse.computershop.dto.ServiceDTO;
-import lk.ijse.computershop.model.ServiceModel;
-import lk.ijse.computershop.to.Service;
-import lk.ijse.computershop.util.CrudUtil;
+import lk.ijse.computershop.entity.Service;
 import lk.ijse.computershop.view.tm.CustomerTm;
-import lk.ijse.computershop.view.tm.EmployTm;
 import lk.ijse.computershop.view.tm.ServiceTm;
 
 import java.io.IOException;
@@ -68,21 +66,28 @@ public class ServiceContoller {
 
     ServiceBO serviceBO = (ServiceBO) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.SERVICE);
 
+    public static ObservableList obList = FXCollections.observableArrayList();
 
-    public void initialize() {
 
-        ColSerID.setCellValueFactory(new PropertyValueFactory<>("SerID"));
-        ColEmID.setCellValueFactory(new PropertyValueFactory<>("EMID"));
-        ColDESC.setCellValueFactory(new PropertyValueFactory<>("Descripion"));
-        ColPrice.setCellValueFactory(new PropertyValueFactory<>("Price"));
+    public void initialize() throws SQLException, ClassNotFoundException {
 
-        AddTable(searchText);
+        obList.clear();
+
+        ColSerID.setCellValueFactory(new PropertyValueFactory<>("serID"));
+        ColEmID.setCellValueFactory(new PropertyValueFactory<>("emID"));
+        ColDESC.setCellValueFactory(new PropertyValueFactory<>("descripion"));
+        ColPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+
         setPattern();
 
-        txtSID.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchText = newValue;
-            AddTable(searchText);
-        });
+       ArrayList arrayList = serviceBO.getAllService();
+
+        for (Object e : arrayList){
+            obList.add(e);
+        }
+
+        searchPart();
+
 
         tblService.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
@@ -91,14 +96,12 @@ public class ServiceContoller {
                 System.out.println(newValue.getSerID());
 
                 txtSerID.setText(newValue.getSerID());
-                txtEmID.setText(newValue.getEMID());
+                txtEmID.setText(newValue.getEmID());
                 txtDESC.setText(newValue.getDescripion());
                 txtPrice.setText(String.valueOf(newValue.getPrice()));
             }
         });
     }
-
-
 
     public void setPattern() {
 
@@ -111,15 +114,6 @@ public class ServiceContoller {
     }
 
 
-    private void setdata(ServiceTm tm) {
-
-        txtSerID.setText(tm.getSerID());
-        txtEmID.setText(tm.getEMID());
-        txtDESC.setText(tm.getDescripion());
-        txtPrice.setText(String.valueOf(tm.getPrice()));
-
-    }
-
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
@@ -129,9 +123,6 @@ public class ServiceContoller {
         Double Price = Double.valueOf(txtPrice.getText());
 
 
-      //  Service service = new Service(SerID, EMID, Desc, Price);
-
-        setPattern();
         if (SerIDMatcher.matches()) {
             if (EmIDMatcher.matches()) {
 
@@ -145,55 +136,23 @@ public class ServiceContoller {
         }
 
         try {
-            /*boolean isAdded = serviceBO.addService(new ServiceDTO(txtSerID.getText(),txtEmID.getText(),txtDESC.getText(),txtPrice.getText()));
-            tblService.getItems().add(new ServiceTm(SerID,EMID,Desc,Price));*/
             boolean isAdded = serviceBO.addService(new ServiceDTO(SerID, EMID, Desc, Price));
 
-            AddTable(searchText);
-
             if (isAdded) {
+
+                new Alert(Alert.AlertType.CONFIRMATION, "Service Added Sccssefully!").show();
 
                 cleardata();
                 initialize();
 
-                new Alert(Alert.AlertType.CONFIRMATION, "Service Added Sccssefully!").show();
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something happened!").show();
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 
-    private void AddTable(String text) {
-
-        String searchText = "%" + text + "%";
-
-        try {
-            ObservableList<ServiceTm> tmList = FXCollections.observableArrayList();
-
-            Connection connection = DBConnection.getInstance().getConnection();
-            String sql = "SELECT * From Service WHERE SerID LIKE ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, searchText);
-            //statement.setString(2,searchText);
-
-            ResultSet set = statement.executeQuery();
-
-            while (set.next()) {
-                ServiceTm serviceTm = new ServiceTm(set.getString(1), set.getString(2), set.getString(3), set.getDouble(4));
-
-                tmList.add(serviceTm);
-            }
-
-            tblService.setItems(tmList);
-
-        } catch (ClassNotFoundException | SQLException e) {
-
-        }
-    }
 
 
     private void cleardata() {
@@ -202,27 +161,6 @@ public class ServiceContoller {
         txtSerID.clear();
         txtDESC.clear();
         txtPrice.clear();
-    }
-
-
-    public static Service Table(String SerID) throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/computershop", "root", "1234");
-        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Service WHERE SerID = ?");
-        pstm.setString(1, SerID);
-
-        ResultSet result = pstm.executeQuery();
-
-        if (result.next()) {
-            return new Service(
-                    result.getString(1),
-                    result.getString(2),
-                    result.getString(3),
-                    result.getDouble(4)
-
-            );
-        }
-        return null;
     }
 
 
@@ -248,16 +186,47 @@ public class ServiceContoller {
 
         if (isUpdate) {
 
-            cleardata();
-            initialize();
-            AddTable(searchText);
 
             new Alert(Alert.AlertType.CONFIRMATION, "Service Update Successfully!").show();
+
+            cleardata();
+            initialize();
+
         } else {
             new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
 
     }
+
+    private void searchPart() {
+        // search customer
+        FilteredList<ServiceTm> filteredList = new FilteredList(obList, b -> true);
+
+        txtSID.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(serviceTm -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (serviceTm.getSerID().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (serviceTm.getEmID().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(serviceTm.getDescripion()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(serviceTm.getPrice()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<ServiceTm> sortedList = new SortedList(filteredList);
+        sortedList.comparatorProperty().bind(tblService.comparatorProperty());
+        tblService.setItems(sortedList);
+    }
+
 
     public void txtSerIDKeyTypeOnAction(KeyEvent keyEvent) {
 

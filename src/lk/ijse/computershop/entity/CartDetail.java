@@ -1,22 +1,24 @@
-package lk.ijse.computershop.to;
+package lk.ijse.computershop.entity;
 
-public class Product {
+public class CartDetail {
+
+    private String orderId;
     private String PrdID;
     private String Name;
     private Double Unit_Price;
     private String Description;
-    private int  QTY;
+    private int QTY;
 
-    public Product(String prdID, String name, Double unitPrice, String descripion, int qty) {
+    public CartDetail() {
     }
 
-    public Product(String prdID, String name, Double unit_Price, String description, String QTY) {
+    public CartDetail(String orderId,String prdID, String name, Double unit_Price, String description, int QTY) {
         PrdID = prdID;
         Name = name;
         Unit_Price = unit_Price;
         Description = description;
-        this.QTY = Integer.parseInt(QTY);
-
+        this.QTY = QTY;
+        this.orderId=orderId;
     }
 
     public String getPrdID() {
@@ -55,18 +57,26 @@ public class Product {
         return QTY;
     }
 
-    public void setQTY(String QTY) {
-        this.QTY = Integer.parseInt(QTY);
+    public void setQTY(int QTY) {
+        this.QTY = QTY;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "CartDetail{" +
                 "PrdID='" + PrdID + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Unit_Price=" + Unit_Price +
                 ", Description='" + Description + '\'' +
-                ", QTY='" + QTY + '\'' +
+                ", QTY=" + QTY +
                 '}';
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

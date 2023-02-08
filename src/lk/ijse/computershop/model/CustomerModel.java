@@ -1,6 +1,6 @@
 package lk.ijse.computershop.model;
 
-import lk.ijse.computershop.to.Customer;
+import lk.ijse.computershop.entity.Customer;
 import lk.ijse.computershop.util.CrudUtil;
 
 import java.sql.ResultSet;

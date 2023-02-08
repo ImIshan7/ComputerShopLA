@@ -1,5 +1,5 @@
 package lk.ijse.computershop.model;
-import lk.ijse.computershop.to.Service;
+import lk.ijse.computershop.entity.Service;
 import lk.ijse.computershop.util.CrudUtil;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ public class ServiceModel {
     public static boolean save(Service service) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO Service VALUES (?, ?, ?, ?)";
-        return CrudUtil.execute(sql,service.getSerID(), service.getEMID(), service.getDescripion(),service.getPrice());
+        return CrudUtil.execute(sql,service.getSerID(), service.getEmID(), service.getDescripion(),service.getPrice());
     }
 
     public static Service search(String SerID) throws SQLException, ClassNotFoundException {

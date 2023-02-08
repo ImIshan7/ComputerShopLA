@@ -1,82 +1,84 @@
 package lk.ijse.computershop.entity;
 
 public class Supplier {
-    private String SupID;
-    private String Name;
-    private String Address;
-    private  String Brand;
-    private Double Unit_Price;
-    private int QTY;
+
+    private String supid;
+    private String name;
+    private String address;
+    private  String brand;
+    private Double unit_Price;
+    private int qty;
+
 
     public Supplier() {
     }
 
-    public Supplier(String supID, String name, String address, String brand, Double unit_Price, int QTY) {
-        SupID = supID;
-        Name = name;
-        Address = address;
-        Brand = brand;
-        Unit_Price = unit_Price;
-        this.QTY = QTY;
+    public Supplier(String supid, String name, String address, String brand, Double unit_Price, int qty) {
+        this.supid = supid;
+        this.name = name;
+        this.address = address;
+        this.brand = brand;
+        this.unit_Price = unit_Price;
+        this.qty = qty;
     }
 
-    public String getSupID() {
-        return SupID;
+    public String getSupid() {
+        return supid;
     }
 
-    public void setSupID(String supID) {
-        SupID = supID;
+    public void setSupid(String supid) {
+        this.supid = supid;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        this.brand = brand;
     }
 
     public Double getUnit_Price() {
-        return Unit_Price;
+        return unit_Price;
     }
 
     public void setUnit_Price(Double unit_Price) {
-        Unit_Price = unit_Price;
+        this.unit_Price = unit_Price;
     }
 
-    public int getQTY() {
-        return QTY;
+    public int getQty() {
+        return qty;
     }
 
-    public void setQTY(int QTY) {
-        this.QTY = QTY;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     @Override
     public String toString() {
         return "Supplier{" +
-                "SupID='" + SupID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Brand='" + Brand + '\'' +
-                ", Unit_Price=" + Unit_Price +
-                ", QTY=" + QTY +
+                "supid='" + supid + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", brand='" + brand + '\'' +
+                ", unit_Price=" + unit_Price +
+                ", qty=" + qty +
                 '}';
     }
 }

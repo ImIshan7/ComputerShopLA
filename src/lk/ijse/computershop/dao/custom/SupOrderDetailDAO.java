@@ -1,7 +1,7 @@
 package lk.ijse.computershop.dao.custom;
 
 import lk.ijse.computershop.dao.SuperDAO;
-import lk.ijse.computershop.to.SupOrderDetail;
+import lk.ijse.computershop.entity.SupOrderDetail;
 
 import java.sql.SQLException;
 

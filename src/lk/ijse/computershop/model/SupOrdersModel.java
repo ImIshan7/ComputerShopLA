@@ -1,6 +1,6 @@
 package lk.ijse.computershop.model;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.to.SupOrders;
+import lk.ijse.computershop.entity.SupOrders;
 import lk.ijse.computershop.util.CrudUtil;
 
 import java.sql.PreparedStatement;

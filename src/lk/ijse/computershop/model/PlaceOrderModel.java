@@ -1,6 +1,6 @@
 package lk.ijse.computershop.model;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.to.Orders;
+import lk.ijse.computershop.entity.Orders;
 import java.sql.SQLException;
 
 

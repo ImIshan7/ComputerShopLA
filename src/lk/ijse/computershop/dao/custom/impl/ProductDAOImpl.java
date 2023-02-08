@@ -2,32 +2,40 @@ package lk.ijse.computershop.dao.custom.impl;
 
 import lk.ijse.computershop.dao.SQLUtil;
 import lk.ijse.computershop.dao.custom.ProductDAO;
-import lk.ijse.computershop.to.Product;
+import lk.ijse.computershop.dto.CustomerDTO;
+import lk.ijse.computershop.dto.ProductDTO;
+import lk.ijse.computershop.entity.Product;
+import lk.ijse.computershop.view.tm.CustomerTm;
+import lk.ijse.computershop.view.tm.ProductTm;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ProductDAOImpl implements ProductDAO {
     @Override
-    public ArrayList<Product> getAll() throws SQLException, ClassNotFoundException {
-        ArrayList<Product> allProduct = new ArrayList<>();
-        ResultSet rst = SQLUtil.execute("SELECT * FROM Product");
-        while (rst.next()){
-
-            allProduct.add(new Product(rst.getString("PrdID"),rst.getString("Name"), Double.valueOf(rst.getString("UnitPrice")),rst.getString("Descripion"), Integer.parseInt(rst.getString("QTY"))));
-
+    public ArrayList getAll() throws SQLException, ClassNotFoundException {
+        String sql="SELECT * FROM Product";
+//        ResultSet resultSet=CrudUtil.execute(sql);
+        ResultSet resultSet=SQLUtil.execute(sql);
+        ArrayList<ProductTm> arrayList=new ArrayList();
+        while (resultSet.next()){
+            arrayList.add(new ProductTm(resultSet.getString(1),resultSet.getString(2),
+                    resultSet.getDouble(3),resultSet.getString(4),resultSet.getInt(5)));
         }
-        return allProduct;
+        return arrayList;
     }
 
     @Override
     public boolean add(Product entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT INTO Product(PrdID, Name, UnitPrice, Descripion, QTY) VALUES(?, ?, ?, ?, ?)",entity.getPrdID(),entity.getName(),entity.getUnit_Price(),entity.getDescription(),entity.getQTY());
+        return SQLUtil.execute("INSERT INTO Product(PrdID, Name, UnitPrice, Descripion, QTY) VALUES(?, ?, ?, ?, ?)",
+                entity.getPrdID(),entity.getName(),entity.getUnit_Price(),entity.getDescription(),entity.getQty());
     }
 
     @Override
     public boolean update(Product entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE Product set Name = ?, UnitPrice = ?,  Descripion = ?, QTY = ? WHERE PrdID = ?",entity.getName(),entity.getUnit_Price(),entity.getDescription(),entity.getQTY(),entity.getPrdID());
+        return SQLUtil.execute("UPDATE Product set Name = ?, UnitPrice = ?,  Descripion = ?, QTY = ? WHERE PrdID = ?",
+                entity.getName(),entity.getUnit_Price(),entity.getDescription(),entity.getQty(),entity.getPrdID());
     }
 
     @Override
@@ -47,10 +55,28 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public Product search(String id) throws SQLException, ClassNotFoundException {
-        ResultSet rst = SQLUtil.execute("SELECT * FROM Product WHERE PrdID=?",id+"");
+    public ProductDTO search(String id) throws SQLException, ClassNotFoundException {
+         /*ResultSet rst = SQLUtil.execute("SELECT  * FROM customer WHERE CID = ?", id + "");
         rst.next();
-        return new Product(id +"", rst.getString("Name"), Double.valueOf(rst.getString("UnitPrice")),rst.getString("Descripion"), Integer.parseInt(rst.getString("QTY")));
+
+        return new Customer(id + "", rst.getString("CID"), rst.getString("name"),
+                rst.getString("address"), rst.getString("contact"));*/
+
+        String sql = "SELECT  * FROM Product WHERE PrdID = ?";
+//        ResultSet result = CrudUtil.execute(sql, id);
+        ResultSet result = SQLUtil.execute(sql, id);
+
+        if (result.next()) {
+            return new ProductDTO(
+                    result.getString(1),
+                    result.getString(2),
+                    result.getDouble(3),
+                    result.getString(4),
+                    result.getInt(5)
+            );
+        }
+        return null;
     }
+
     }
 

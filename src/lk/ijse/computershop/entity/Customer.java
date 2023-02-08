@@ -1,20 +1,20 @@
 package lk.ijse.computershop.entity;
 
 public class Customer {
-
     private String ID;
     private String Name;
     private String Address;
     private String Contact;
 
-    public Customer() {
+    public Customer(String string, String resultString, String s){
+
     }
 
     public Customer(String ID, String name, String address, String contact) {
         this.ID = ID;
-        Name = name;
-        Address = address;
-        Contact = contact;
+        this.Name = name;
+       this. Address = address;
+       this. Contact = contact;
     }
 
     public String getID() {
@@ -55,7 +55,10 @@ public class Customer {
                 "ID='" + ID + '\'' +
                 ", Name='" + Name + '\'' +
                 ", Address='" + Address + '\'' +
-                ", Contact='" + Contact + '\'' +
+                ", Contact=" + Contact +
                 '}';
     }
 }
+
+
+

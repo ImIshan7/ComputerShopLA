@@ -1,5 +1,7 @@
 package lk.ijse.computershop.controller;
 import com.jfoenix.controls.JFXTextArea;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.stage.Stage;
 import lk.ijse.computershop.bo.BOFactory;
 import lk.ijse.computershop.bo.custom.EmployBO;
 import lk.ijse.computershop.dto.EmployDTO;
+import lk.ijse.computershop.view.tm.CustomerTm;
 import lk.ijse.computershop.view.tm.EmployTm;
 
 import java.io.IOException;
@@ -65,58 +68,45 @@ public class EmployController {
 
    EmployBO employBO = (EmployBO) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.EMPLOY);
 
+    public static ObservableList obList = FXCollections.observableArrayList();
 
 
-    public void initialize() {
-
-        ColEMID.setCellValueFactory(new PropertyValueFactory<>("EMID"));
-        ColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        ColAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        ColContact.setCellValueFactory(new PropertyValueFactory<>("Contact"));
 
 
-        loadAllEmploy();
-      //  searchEmploy();
+    public void initialize() throws SQLException, ClassNotFoundException {
 
-      //  AddTable(searchText);
+        obList.clear();
+
+        ColEMID.setCellValueFactory(new PropertyValueFactory<>("emID"));
+        ColName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ColAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        ColContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+
+
+
+        ArrayList arrayList = employBO.getAllEmploy();
+
+        for (Object e : arrayList){
+            obList.add(e);
+
+        }
 
         setPattern();
-
-        txtSerachID.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchText=newValue;
-          //  AddTable(searchText);
-
-
-        });
+        searchPart();
 
         tblEmployee.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                selectedID = newValue.getEMID();
+                selectedID = newValue.geteMID();
 
-                System.out.println(newValue.getEMID());
+                System.out.println(newValue.geteMID());
 
-                txtID.setText(newValue.getEMID());
+                txtID.setText(newValue.geteMID());
                 txtName.setText(newValue.getName());
                 txtAddress.setText(newValue.getAddress());
                 txtContact.setText(newValue.getContact());
             }
         } );
 
-    }
-
-
-    private void loadAllEmploy(){
-        tblEmployee.getItems().clear();
-        try {
-            ArrayList<EmployDTO> allEmploy = employBO.getAllEmploy();
-
-            for (EmployDTO c : allEmploy){
-                tblEmployee.getItems().add(new EmployTm(c.getEMID(),c.getName(),c.getAddress(),c.getContact()));
-
-            }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
     }
 
 
@@ -134,24 +124,7 @@ public class EmployController {
         Pattern userContactPattern = Pattern.compile("^(?:7|0|(?:\\+94))[0-9]{9,10}$");
         EMContactMatcher = userContactPattern.matcher(txtContact.getText());
 
-//        Pattern userContactPattern = Pattern.compile("^(?:7|0|(?:\\+94))[0-9]{9,10}$");
-//        dTelephoneMatcher = userContactPattern.matcher(txtTelephone.getText());
-//
-//        Pattern amountPattern = Pattern.compile("^[0-9]{1,}$");
-//        dAmountMatcher = amountPattern.matcher(txtLoanAmount.getText());
-//
-//        Pattern nicPattern = Pattern.compile("^[0-9]{10}[vVxX]$");
-//        dNicMatcher = nicPattern.matcher(txtNIC.getText());
-    }
 
-
-
-    private void setdata(EmployTm tm){
-
-       txtID.setText(tm.getID());
-       txtName.setText(tm.getName());
-       txtAddress.setText(tm.getAddress());
-       txtContact.setText(tm.getContact());
     }
 
 
@@ -163,9 +136,7 @@ public class EmployController {
         String Address = txtAddress.getText();
         String Contact = txtContact.getText();
 
-      //  Employ employ = new Employ(EMID, Name, Address, Contact);
 
-        setPattern();
         if (EmIDMatcher.matches()) {
             if (EMNameMatcher.matches()) {
                 if (EmAddressMatcher.matches()) {
@@ -194,15 +165,13 @@ public class EmployController {
 
         try {
             boolean isAdded = employBO.addEmploy(new EmployDTO(txtID.getText(),txtName.getText(),txtAddress.getText(),txtContact.getText()));
-            tblEmployee.getItems().add(new EmployTm(EMID,Name,Address,Contact));
-
-           // AddTable(searchText);
 
             if (isAdded) {
 
-                cleardata();
-
                 new Alert(Alert.AlertType.CONFIRMATION, "Employ Added successfully!").show();
+                cleardata();
+                initialize();
+
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something happened!").show();
             }
@@ -214,65 +183,6 @@ public class EmployController {
     }
 
 
-//    private void searchEmploy() {
-//        // search customer
-//        FilteredList<EmployTm> filteredList = new FilteredList(obList, b -> true);
-//
-//        txtSerachID.textProperty().addListener((observable, oldValue, newValue) -> {
-//            filteredList.setPredicate(employTm -> {
-//                if (newValue == null || newValue.isEmpty()) {
-//                    return true;
-//                }
-//                String lowerCaseFilter = newValue.toLowerCase();
-//                if (employTm.getEMID().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-//                    return true;
-//                } else if (employTm.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
-//                    return true;
-//                } else if (String.valueOf(employTm.getAddress()).indexOf(lowerCaseFilter) != -1) {
-//                    return true;
-//                } else if (String.valueOf(employTm.getContact()).indexOf(lowerCaseFilter) != -1) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-//            });
-//        });
-//
-//        SortedList<EmployTm> sortedList = new SortedList(filteredList);
-//        sortedList.comparatorProperty().bind(tblEmployee.comparatorProperty());
-//        tblEmployee.setItems(sortedList);
-//    }
-
-
-
-//    private void  AddTable(String text) {
-//        String searchText = "%" + text + "%";
-//
-//        try {
-//            ObservableList<EmployTm> tmList = FXCollections.observableArrayList();
-//
-//
-//            Connection connection = DBConnection.getInstance().getConnection();
-//            String sql = "SELECT * From Employ WHERE Name LIKE ? || EMID LIKE?";
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setString(1,searchText);
-//            statement.setString(2,searchText);
-//            ResultSet set = statement.executeQuery();
-//
-//            while (set.next()){
-//                EmployTm employTm = new EmployTm(set.getString(1),set.getString(2),set.getString(3),
-//                        set.getString(4));
-//
-//                tmList.add(employTm);
-//            }
-//
-//
-//            tblEmployee.setItems(tmList);
-//
-//        } catch (ClassNotFoundException | SQLException e)  {
-//
-//        }
-//    }
 
    private void cleardata(){
 
@@ -283,25 +193,6 @@ public class EmployController {
 
    }
 
-//    public static Employ Table(String EMID) throws SQLException, ClassNotFoundException {
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/computershop", "root", "1234");
-//        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Employ WHERE EMID = ?");
-//        pstm.setString(1, EMID);
-//
-//        ResultSet result = pstm.executeQuery();
-//
-//        if(result.next()) {
-//            return new Employ(
-//                    result.getString(1),
-//                    result.getString(2),
-//                    result.getString(3),
-//                    result.getString(4)
-//            );
-//        }
-//        return null;
-//    }
-
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -310,37 +201,62 @@ public class EmployController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
 
-
-         //   boolean isDeleted = CrudUtil.execute("DELETE FROM Employ WHERE EMID=?", selectedID);
-
-            String EMID = tblEmployee.getSelectionModel().getSelectedItem().getEMID();
+            String EMID = tblEmployee.getSelectionModel().getSelectedItem().geteMID();
             boolean isDeleted = employBO.deleteEmploy(EMID);
 
             if (isDeleted) {
-               // AddTable(searchText);
-                loadAllEmploy();
+
                 new Alert(Alert.AlertType.CONFIRMATION, "Employee Deleted!").show();
+
                 cleardata();
+                initialize();
+
             } else new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
     }
 
+    private void searchPart() {
+        // search customer
+        FilteredList<EmployTm> filteredList = new FilteredList(obList, b -> true);
+
+        txtSerachID.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(employTm -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (employTm.geteMID().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (employTm.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(employTm.getAddress()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(employTm.getContact()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<EmployTm> sortedList = new SortedList(filteredList);
+        sortedList.comparatorProperty().bind(tblEmployee.comparatorProperty());
+        tblEmployee.setItems(sortedList);
+    }
+
+
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
-
-//        String Name = txtName.getText();
-//        String Address = txtAddress.getText();
-//        String Contact = txtContact.getText();
-
-        //boolean isUpdate = CrudUtil.execute("UPDATE Employ set Name = ?, Address = ?,  Contact = ? WHERE EMID = ?", Name, Address,  Contact, selectedID);
 
         boolean isUpdate = employBO.updateEmploy(new EmployDTO(txtID.getText(),txtName.getText(),txtAddress.getText(),txtContact.getText()));
 
         if (isUpdate) {
-          //  AddTable(searchText);
-            loadAllEmploy();
-            cleardata();
+
             new Alert(Alert.AlertType.CONFIRMATION, "Employee Update Successfully!").show();
+
+            cleardata();
+            initialize();
+
         } else {
             new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }

@@ -1,19 +1,24 @@
 package lk.ijse.computershop.entity;
 
-import java.sql.Date;
+import java.util.ArrayList;
 
 public class SupOrders {
+
     private String SupOrderID;
     private String SupID;
     private java.sql.Date Date;
 
-    public SupOrders() {
-    }
+    private ArrayList<SupOrderDetail> SupOrderDetails;
 
-    public SupOrders(String supOrderID, String supID, java.sql.Date date) {
+    public SupOrders(String supOrderID, String supID, java.sql.Date date, ArrayList<SupOrderDetail> supOrderDetails) {
         SupOrderID = supOrderID;
         SupID = supID;
         Date = date;
+        SupOrderDetails = supOrderDetails;
+    }
+
+    public SupOrders() {
+
     }
 
     public String getSupOrderID() {
@@ -40,12 +45,17 @@ public class SupOrders {
         Date = date;
     }
 
+    public ArrayList<SupOrderDetail> getSupOrderDetails() {
+        return SupOrderDetails;
+    }
+
     @Override
     public String toString() {
         return "SupOrders{" +
                 "SupOrderID='" + SupOrderID + '\'' +
                 ", SupID='" + SupID + '\'' +
                 ", Date=" + Date +
+                ", SupOrderDetails=" + SupOrderDetails +
                 '}';
     }
 }

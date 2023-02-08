@@ -8,9 +8,9 @@ import lk.ijse.computershop.dao.custom.SupOrdersDAO;
 import lk.ijse.computershop.dao.custom.SupplierDAO;
 import lk.ijse.computershop.dto.ProductDTO;
 import lk.ijse.computershop.dto.SupplierDTO;
-import lk.ijse.computershop.to.Product;
-import lk.ijse.computershop.to.SupOrders;
-import lk.ijse.computershop.to.Supplier;
+import lk.ijse.computershop.entity.Product;
+import lk.ijse.computershop.entity.SupOrders;
+import lk.ijse.computershop.entity.Supplier;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -27,14 +27,16 @@ public class SupplierOrderBOImpl implements SupplierOrderBO {
 
     @Override
     public SupplierDTO searchSupplier(String id) throws SQLException, ClassNotFoundException {
-        Supplier supplier = supplierDAO.search(id);
-        return new SupplierDTO(supplier.getSupID(),supplier.getName(),supplier.getAddress(),supplier.getBrand(),supplier.getUnit_Price(),supplier.getQTY());
-    }
+//        Supplier supplier = supplierDAO.search(id);
+//        return new SupplierDTO(supplier.getSupID(),supplier.getName(),supplier.getAddress(),supplier.getBrand(),supplier.getUnit_Price(),supplier.getQTY());
+        return null;
+   }
 
     @Override
     public ProductDTO searchProduct(String PrdID) throws SQLException, ClassNotFoundException {
-        Product p = productDAO.search(PrdID);
-        return new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY());
+//        Product p = productDAO.search(PrdID);
+//        return new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY());
+        return null;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class SupplierOrderBOImpl implements SupplierOrderBO {
         ArrayList<Supplier> allEntityDTO = supplierDAO.getAll();
         ArrayList<SupplierDTO> allData = new ArrayList<>() ;
         for (SupplierDTO s : allData){
-            allEntityDTO.add(new Supplier(s.getSupID(),s.getName(),s.getAddress(),s.getBrand(),s.getUnit_Price(),s.getQTY()));
+            allEntityDTO.add(new Supplier(s.getSupid(),s.getName(),s.getAddress(),s.getBrand(),s.getUnit_Price(),s.getQty()));
         }
         return allData;
     }
@@ -57,7 +59,7 @@ public class SupplierOrderBOImpl implements SupplierOrderBO {
         ArrayList<Product> entityTypeData = productDAO.getAll();
         ArrayList<ProductDTO> allData = new ArrayList<>();
         for (Product p : entityTypeData){
-            allData.add(new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY()));
+            allData.add(new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQty()));
         }
         return allData;
 

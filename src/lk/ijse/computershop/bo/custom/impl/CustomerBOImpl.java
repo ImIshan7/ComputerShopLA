@@ -3,7 +3,7 @@ import lk.ijse.computershop.bo.custom.CustomerBO;
 import lk.ijse.computershop.dao.DAOFactory;
 import lk.ijse.computershop.dao.custom.CustomerDAO;
 import lk.ijse.computershop.dto.CustomerDTO;
-import lk.ijse.computershop.to.Customer;
+import lk.ijse.computershop.entity.Customer;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,26 +14,22 @@ public class CustomerBOImpl implements CustomerBO {
 
     @Override
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException {
-        ArrayList<CustomerDTO> allCustomers = new ArrayList<>();
-        ArrayList<Customer> all = customerDAO.getAll();
-        for (Customer customer : all){
-            allCustomers.add(new CustomerDTO(customer.getID(),customer.getName(),customer.getAddress(),customer.getContact()));
-        }
-        return allCustomers;
+
+        return customerDAO.getAll();
     }
 
     @Override
     public boolean addCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
-        return customerDAO.add(new Customer(dto.getID(),dto.getName(),dto.getAddress(),dto.getContact()));
+        return customerDAO.add(new Customer(dto.getId(),dto.getName(),dto.getAddress(),dto.getContact()));
     }
 
     @Override
     public boolean updateCustomer(CustomerDTO dto) throws SQLException, ClassNotFoundException {
-        return customerDAO.update(new Customer(dto.getID(),dto.getName(),dto.getAddress(),dto.getContact()));
+        return customerDAO.update(new Customer(dto.getId(),dto.getName(),dto.getAddress(),dto.getContact()));
     }
 
     @Override
-    public Customer searchCustomer(String id) throws SQLException, ClassNotFoundException {
+    public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
         return customerDAO.search(id);
     }
 

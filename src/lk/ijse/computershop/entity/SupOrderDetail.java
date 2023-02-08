@@ -1,7 +1,6 @@
 package lk.ijse.computershop.entity;
 
 public class SupOrderDetail {
-
     private String PrdID;
     private String  SupOrderID;
     private int QTY;

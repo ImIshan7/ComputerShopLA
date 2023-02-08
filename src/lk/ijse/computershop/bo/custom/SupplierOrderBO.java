@@ -3,7 +3,7 @@ package lk.ijse.computershop.bo.custom;
 import lk.ijse.computershop.bo.SuperBO;
 import lk.ijse.computershop.dto.ProductDTO;
 import lk.ijse.computershop.dto.SupplierDTO;
-import lk.ijse.computershop.to.SupOrders;
+import lk.ijse.computershop.entity.SupOrders;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

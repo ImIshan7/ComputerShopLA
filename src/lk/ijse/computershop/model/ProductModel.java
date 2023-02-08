@@ -1,9 +1,7 @@
 package lk.ijse.computershop.model;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.to.CartDetail;
-import lk.ijse.computershop.to.OrderDetail;
-import lk.ijse.computershop.to.Product;
-import lk.ijse.computershop.to.SupOrderDetail;
+import lk.ijse.computershop.entity.OrderDetail;
+import lk.ijse.computershop.entity.Product;
 import lk.ijse.computershop.util.CrudUtil;
 
 import java.sql.PreparedStatement;
@@ -16,7 +14,7 @@ public class ProductModel {
     public static boolean save(Product product) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO Product VALUES (?, ?, ?, ?,?)";
-        return CrudUtil.execute(sql,product.getPrdID(), product.getName(),  product.getUnit_Price(),product.getDescription(),product.getQTY());
+        return CrudUtil.execute(sql,product.getPrdID(), product.getName(),  product.getUnit_Price(),product.getDescription(),product.getQty());
     }
 
     public static Product search(String PrdID) throws SQLException, ClassNotFoundException {
@@ -30,7 +28,7 @@ public class ProductModel {
                     result.getString(2),
                     result.getDouble(3),
                     result.getString(4),
-                    result.getString(5)
+                    result.getInt(5)
             );
         }
         return null;

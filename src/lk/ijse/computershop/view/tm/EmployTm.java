@@ -1,58 +1,61 @@
 package lk.ijse.computershop.view.tm;
 
-public class EmployTm extends CustomerTm {
+public class EmployTm  {
 
-    private String EMID;
-    private String Name;
-    private String Address;
-    private String Contact;
+    private String emID;
+    private String name;
+    private String address;
+    private String contact;
 
-    public EmployTm(String EMID, String name, String address, String contact) {
-        this.EMID = EMID;
-        Name = name;
-        Address = address;
-        Contact = contact;
+    public EmployTm() {
     }
 
-    public String getEMID() {
-        return EMID;
+    public EmployTm(String eMID, String name, String address, String contact) {
+        this.emID = eMID;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
     }
 
-    public void setEMID(String EMID) {
-        this.EMID = EMID;
+    public String geteMID() {
+        return emID;
+    }
+
+    public void seteMID(String eMID) {
+        this.emID = eMID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getContact() {
-        return Contact;
+        return contact;
     }
 
     public void setContact(String contact) {
-        Contact = contact;
+        this.contact = contact;
     }
 
     @Override
     public String toString() {
         return "EmployTm{" +
-                "EMID='" + EMID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Contact='" + Contact + '\'' +
+                "eMID='" + emID + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
                 '}';
     }
 }

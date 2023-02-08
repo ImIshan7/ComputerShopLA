@@ -2,7 +2,7 @@ package lk.ijse.computershop.dao.custom.impl;
 
 import lk.ijse.computershop.dao.SQLUtil;
 import lk.ijse.computershop.dao.custom.OrderDetailDAO;
-import lk.ijse.computershop.to.OrderDetail;
+import lk.ijse.computershop.entity.OrderDetail;
 
 
 

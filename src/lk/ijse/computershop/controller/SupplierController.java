@@ -3,6 +3,8 @@ package lk.ijse.computershop.controller;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,14 +17,8 @@ import javafx.stage.Stage;
 import lk.ijse.computershop.bo.BOFactory;
 import lk.ijse.computershop.bo.custom.SupplierBO;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.dto.EmployDTO;
-import lk.ijse.computershop.dto.ServiceDTO;
 import lk.ijse.computershop.dto.SupplierDTO;
-import lk.ijse.computershop.model.SupplierModel;
-import lk.ijse.computershop.to.Customer;
-import lk.ijse.computershop.to.Supplier;
-import lk.ijse.computershop.util.CrudUtil;
-import lk.ijse.computershop.view.tm.EmployTm;
+import lk.ijse.computershop.view.tm.CustomerTm;
 import lk.ijse.computershop.view.tm.SupplierTm;
 
 
@@ -84,56 +80,61 @@ public class SupplierController {
 
 SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.BoTypes.SUPPLIER);
 
-    public void initialize() {
+    public static ObservableList obList = FXCollections.observableArrayList();
 
-        ColSupID.setCellValueFactory(new PropertyValueFactory<>("SupID"));
-        ColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        ColAddress.setCellValueFactory(new PropertyValueFactory<>("Address"));
-        ColBrand.setCellValueFactory(new PropertyValueFactory<>("Brand"));
-        ColPrice.setCellValueFactory(new PropertyValueFactory<>("Unit_Price"));
-        ColQTY.setCellValueFactory(new PropertyValueFactory<>("QTY"));
 
-        loadAllSupplier();
+    public void initialize() throws SQLException, ClassNotFoundException {
 
-        AddTable(searchText);
+        obList.clear();
+
+        ColSupID.setCellValueFactory(new PropertyValueFactory<>("supid"));
+        ColName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ColAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        ColBrand.setCellValueFactory(new PropertyValueFactory<>("brand"));
+        ColPrice.setCellValueFactory(new PropertyValueFactory<>("unit_Price"));
+        ColQTY.setCellValueFactory(new PropertyValueFactory<>("qty"));
+
+
         setPattern();
 
-        txtSearchID.textProperty().addListener((observable, oldValue, newValue) -> {
-            searchText=newValue;
-           AddTable(searchText);
+        ArrayList arrayList = supplierBO.getAllSupplier();
 
-        });
+        for (Object e : arrayList){
+            obList.add(e);
+        }
+
+        searchPart();
 
         tblSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                selectedID = newValue.getSupID();
+                selectedID = newValue.getSupid();
 
-                System.out.println(newValue.getSupID());
+                System.out.println(newValue.getSupid());
 
-                txtID.setText(newValue.getSupID());
+                txtID.setText(newValue.getSupid());
                 txtName.setText(newValue.getName());
                 txtAddress.setText(newValue.getAddress());
                 txtBrand.setText(newValue.getBrand());
                 txtPrice.setText(String.valueOf(newValue.getUnit_Price()));
-                txtQTY.setText(String.valueOf(newValue.getQTY()));
+                txtQTY.setText(String.valueOf(newValue.getQty()));
             }
         } );
     }
 
 
-    private void loadAllSupplier(){
+   /* private void loadAllSupplier(){
         tblSupplier.getItems().clear();
         try {
             ArrayList<SupplierDTO> allSupplier = supplierBO.getAllSupplier();
 
             for (SupplierDTO c : allSupplier){
-                tblSupplier.getItems().add(new SupplierTm(c.getSupID(),c.getName(),c.getAddress(),c.getBrand(),c.getUnit_Price(),c.getQTY()));
+                tblSupplier.getItems().add(new SupplierTm(c.getSupid(),c.getName(),c.getAddress(),c.getBrand(),c.getUnit_Price(),c.getQty()));
 
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
 
@@ -160,14 +161,6 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
     }
 
 
-    private void setdata(SupplierTm tm){
-        txtID.setText(tm.getSupID());
-        txtName.setText(tm.getName());
-        txtAddress.setText(tm.getAddress());
-        txtBrand.setText(tm.getBrand());
-        txtPrice.setText(String.valueOf(tm.getUnit_Price()));
-        txtQTY.setText(String.valueOf(tm.getQTY()));
-    }
     @FXML
     void btnAddOnAction(ActionEvent event) {
 
@@ -179,7 +172,6 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
         int QTY = Integer.parseInt(txtQTY.getText());
 
 
-      //  Supplier supplier = new Supplier(SupID, Name, Address, Brand,Unit_Price,QTY);
 
         setPattern();
         if (SupIDMatcher.matches()) {
@@ -220,20 +212,16 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
 
 
         try {
-            boolean isAdded = supplierBO.addSupplier(new SupplierDTO(SupID,Name,Address,Brand,Unit_Price,QTY));
-        //    tblSupplier.getItems().add(new SupplierTm(SupID,Name,Address,Brand,Unit_Price,QTY));
-
-
-           // loadAllSupplier();
-           AddTable(searchText);
+            boolean isAdded = supplierBO.addSupplier(new SupplierDTO(SupID,Name,Address,Brand));
 
 
             if (isAdded) {
 
-                cleardata();
-
-
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Added  Successfully!").show();
+
+                cleardata();
+                initialize();
+
             } else {
                 new Alert(Alert.AlertType.WARNING, "Something happened!").show();
             }
@@ -243,36 +231,7 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
 
     }
 
-    private void  AddTable(String text) {
 
-        String searchText = "%" + text + "%";
-
-        try {
-            ObservableList<SupplierTm> tmList = FXCollections.observableArrayList();
-
-
-            Connection connection = DBConnection.getInstance().getConnection();
-            String sql = "SELECT * From Supplier WHERE SupID LIKE? || Name LIKE ? ";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1,searchText);
-            statement.setString(2,searchText);
-            ResultSet set = statement.executeQuery();
-
-
-            while (set.next()){
-                SupplierTm supplierTm = new SupplierTm(set.getString(1),set.getString(2),set.getString(3),
-                        set.getString(4) ,set.getDouble(5),set.getInt(6));
-
-                tmList.add(supplierTm);
-            }
-
-
-            tblSupplier.setItems(tmList);
-
-        } catch (ClassNotFoundException | SQLException e)  {
-
-        }
-    }
 
 
 
@@ -286,49 +245,60 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
     }
 
 
-
-//    public static Supplier Table(String SupID) throws SQLException, ClassNotFoundException {
-//        Class.forName("com.mysql.cj.jdbc.Driver");
-//        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/computershop", "root", "1234");
-//        PreparedStatement pstm = connection.prepareStatement("SELECT * FROM Supplier WHERE SupID = ?");
-//        pstm.setString(1, SupID);
-//
-//        ResultSet result = pstm.executeQuery();
-//
-//        if(result.next()) {
-//            return new Supplier(
-//                    result.getString(1),
-//                    result.getString(2),
-//                    result.getString(3),
-//                    result.getString(4),
-//                    result.getDouble(5),
-//                    result.getInt(6)
-//            );
-//        }
-//        return null;
-//
-//
-//    }
-
     @FXML
     void btnDeleteOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         Alert alert = new Alert(Alert.AlertType.WARNING, "Are You Sure You Want To Delete These Supplier?", ButtonType.YES, ButtonType.NO);
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
-          //  boolean isDeleted = CrudUtil.execute("DELETE FROM Supplier where SupID=?", selectedID);
-            String SupID = tblSupplier.getSelectionModel().getSelectedItem().getSupID();
+            String SupID = tblSupplier.getSelectionModel().getSelectedItem().getSupid();
             boolean isDeleted = supplierBO.deleteSupplier(SupID);
 
             if (isDeleted) {
-               AddTable(searchText);
-              //  loadAllSupplier();
+
 
                 new Alert(Alert.AlertType.CONFIRMATION, "Supplier Deleted!").show();
+
                 cleardata();
+                initialize();
+
             } else new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
     }
+
+    private void searchPart() {
+        // search customer
+        FilteredList<SupplierTm> filteredList = new FilteredList(obList, b -> true);
+
+        txtSearchID.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredList.setPredicate(supplierTm -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (supplierTm.getSupid().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (supplierTm.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(supplierTm.getAddress()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(supplierTm.getBrand()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(supplierTm.getUnit_Price()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else if (String.valueOf(supplierTm.getQty()).indexOf(lowerCaseFilter) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        });
+
+        SortedList<SupplierTm> sortedList = new SortedList(filteredList);
+        sortedList.comparatorProperty().bind(tblSupplier.comparatorProperty());
+        tblSupplier.setItems(sortedList);
+    }
+
 
     @FXML
     void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
@@ -341,22 +311,18 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
         Double Unit_Price = Double.valueOf(txtPrice.getText());
         int QTY = Integer.parseInt(txtQTY.getText());
 
-       // boolean isUpdate = CrudUtil.execute("UPDATE Supplier set Name = ?, Address = ?, Brand = ?, Unit_Price = ?, QTY = ? WHERE SupID = ?", Name, Address, Brand,Unit_Price,QTY,selectedID);
 
-        boolean isUpdate = supplierBO.updateSupplier(new SupplierDTO(SupID,Name,Address,Brand, Unit_Price,QTY));
-
-       AddTable(searchText);
-       // loadAllSupplier();
-
+        boolean isUpdate = supplierBO.updateSupplier(new SupplierDTO(SupID,Name,Address,Brand));
 
 
         if (isUpdate) {
 
             cleardata();
-          //  txtSearchID.clear();
-           // cleardata();
 
             new Alert(Alert.AlertType.CONFIRMATION, "Supplier Update Successfully!").show();
+
+            initialize();
+
         } else {
             new Alert(Alert.AlertType.WARNING, "Something happened!").show();
         }
@@ -369,25 +335,6 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
         stage.setScene(new Scene(FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../view/DashBoard.fxml")))));
     }
 
-
-//    public static ArrayList<Supplier> getAllSuppliers() throws ClassNotFoundException, SQLException {
-//        Connection connection = DBConnection.getInstance().getConnection();
-//        ResultSet result = connection.prepareStatement("SELECT * FROM Supplier").executeQuery();
-//        ArrayList<Supplier> data = new ArrayList();
-//        while (result.next()) {
-//            Supplier s = new Supplier(
-//                    result.getString(1),
-//                    result.getString(2),
-//                    result.getString(3),
-//                    result.getString(4),
-//                    result.getDouble(5),
-//                    result.getInt(6)
-//            );
-//
-//            data.add(s);
-//        }
-//        return data;
-//    }
 
     public void txtSupIDKeyTypeOnAction(KeyEvent keyEvent) {
 

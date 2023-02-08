@@ -2,67 +2,73 @@ package lk.ijse.computershop.view.tm;
 
 public class SupplierTm {
 
-    private String SupID;
-    private String Name;
-    private String Address;
-    private  String Brand;
-    private Double Unit_Price;
-    private int QTY;
+    private String supid;
+    private String name;
+    private String address;
+    private  String brand;
+    private Double unit_Price;
+    private int qty;
 
-    public SupplierTm(String supID, String name, String address, String brand, Double unit_Price, int QTY) {
-        SupID = supID;
-        Name = name;
-        Address = address;
-        Brand = brand;
-        Unit_Price = unit_Price;
-        this.QTY = QTY;
+
+    public SupplierTm() {
     }
 
-    public String getSupID() {
-        return SupID;
+    public SupplierTm(String supid, String name, String address, String brand, double unit_Price, int qty) {
+        this.supid = supid;
+        this.name = name;
+        this.address = address;
+        this.brand = brand;
+        this.unit_Price = unit_Price;
+        this.qty = qty;
     }
 
-    public void setSupID(String supID) {
-        SupID = supID;
+    public String getSupid() {
+        return supid;
+    }
+
+    public void setSupid(String supid) {
+        this.supid = supid;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
     public void setBrand(String brand) {
-        Brand = brand;
+        this.brand = brand;
     }
 
     public Double getUnit_Price() {
-        return Unit_Price;
+        return unit_Price;
     }
 
     public void setUnit_Price(Double unit_Price) {
-        Unit_Price = unit_Price;
+        this.unit_Price = unit_Price;
     }
 
-    public int getQTY() {
-        return QTY;
+    public int getQty() {
+        return qty;
     }
 
-    public void setQTY(int QTY) {
-        this.QTY = QTY;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
+
+
 }

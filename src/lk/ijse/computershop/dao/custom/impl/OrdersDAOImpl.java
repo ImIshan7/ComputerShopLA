@@ -1,7 +1,9 @@
 package lk.ijse.computershop.dao.custom.impl;
 import lk.ijse.computershop.dao.SQLUtil;
 import lk.ijse.computershop.dao.custom.OrdersDAO;
-import lk.ijse.computershop.to.Orders;
+import lk.ijse.computershop.dto.CustomerDTO;
+import lk.ijse.computershop.dto.OrdersDTO;
+import lk.ijse.computershop.entity.Orders;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class OrdersDAOImpl implements OrdersDAO {
     }
 
     @Override
-    public Orders search(String id) throws SQLException, ClassNotFoundException {
+    public OrdersDTO search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

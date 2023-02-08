@@ -9,8 +9,8 @@ import lk.ijse.computershop.dao.custom.ProductDAO;
 import lk.ijse.computershop.dto.CustomerDTO;
 import lk.ijse.computershop.dto.OrdersDTO;
 import lk.ijse.computershop.dto.ProductDTO;
-import lk.ijse.computershop.to.Customer;
-import lk.ijse.computershop.to.Product;
+import lk.ijse.computershop.entity.Customer;
+import lk.ijse.computershop.entity.Product;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,14 +25,15 @@ public class OrderPlaceBOImpl implements OrderPlaceBO {
 
     @Override
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException {
-        Customer c = customerDAO.search(id);
-        return new CustomerDTO(c.getID(),c.getName(),c.getAddress(),c.getContact());
+        CustomerDTO c = customerDAO.search(id);
+        return new CustomerDTO(c.getId(),c.getName(),c.getAddress(),c.getContact());
     }
 
     @Override
     public ProductDTO searchProduct(String PrdID) throws SQLException, ClassNotFoundException {
-        Product p = productDAO.search(PrdID);
-        return new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY());
+//        Product p = productDAO.(PrdID);
+//        return new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY());
+        return null;
     }
 
     @Override
@@ -55,7 +56,7 @@ public class OrderPlaceBOImpl implements OrderPlaceBO {
         ArrayList<Product> entityTypeData = productDAO.getAll();
         ArrayList<ProductDTO> allData = new ArrayList<>();
         for (Product p : entityTypeData){
-            allData.add(new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQTY()));
+            allData.add(new ProductDTO(p.getPrdID(),p.getName(),p.getUnit_Price(),p.getDescription(),p.getQty()));
         }
         return allData;
     }

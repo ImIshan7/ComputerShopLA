@@ -2,7 +2,9 @@ package lk.ijse.computershop.dao.custom.impl;
 
 import lk.ijse.computershop.dao.SQLUtil;
 import lk.ijse.computershop.dao.custom.SupOrdersDAO;
-import lk.ijse.computershop.to.SupOrders;
+import lk.ijse.computershop.dto.CustomerDTO;
+import lk.ijse.computershop.dto.SupOrdersDTO;
+import lk.ijse.computershop.entity.SupOrders;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -36,7 +38,7 @@ public class SupOrdersDAOImpl implements SupOrdersDAO {
     }
 
     @Override
-    public SupOrders search(String id) throws SQLException, ClassNotFoundException {
+    public SupOrdersDTO search(String id) throws SQLException, ClassNotFoundException {
         return null;
     }
 }

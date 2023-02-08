@@ -12,15 +12,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.ijse.computershop.bo.BOFactory;
-import lk.ijse.computershop.bo.custom.CustomerBO;
 import lk.ijse.computershop.bo.custom.OrderPlaceBO;
-import lk.ijse.computershop.dto.CustomerDTO;
 import lk.ijse.computershop.model.OrdersModel;
 import lk.ijse.computershop.model.PlaceOrderModel;
-import lk.ijse.computershop.to.Customer;
-import lk.ijse.computershop.to.OrderDetail;
-import lk.ijse.computershop.to.Orders;
-import lk.ijse.computershop.to.Product;
+import lk.ijse.computershop.entity.OrderDetail;
+import lk.ijse.computershop.entity.Orders;
 import lk.ijse.computershop.view.tm.CartTm;
 
 

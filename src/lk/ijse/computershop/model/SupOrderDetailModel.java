@@ -1,6 +1,6 @@
 package lk.ijse.computershop.model;
 import lk.ijse.computershop.db.DBConnection;
-import lk.ijse.computershop.to.SupOrderDetail;
+import lk.ijse.computershop.entity.SupOrderDetail;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;

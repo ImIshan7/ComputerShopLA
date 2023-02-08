@@ -2,57 +2,60 @@ package lk.ijse.computershop.view.tm;
 
 public class ServiceTm {
 
-    private String SerID;
-    private String EMID;
-    private String Descripion;
-    private Double Price;
+    private String serID;
+    private String emID;
+    private String descripion;
+    private Double price;
 
-    public ServiceTm(String serID, String EMID, String descripion, Double price) {
-        SerID = serID;
-        this.EMID = EMID;
-        Descripion = descripion;
-        Price = price;
+    public ServiceTm() {
+    }
+
+    public ServiceTm(String serID, String emID, String descripion, Double price) {
+        this.serID = serID;
+        this.emID = emID;
+        this.descripion = descripion;
+        this.price = price;
     }
 
     public String getSerID() {
-        return SerID;
+        return serID;
     }
 
     public void setSerID(String serID) {
-        SerID = serID;
+        this.serID = serID;
     }
 
-    public String getEMID() {
-        return EMID;
+    public String getEmID() {
+        return emID;
     }
 
-    public void setEMID(String EMID) {
-        this.EMID = EMID;
+    public void setEmID(String emID) {
+        this.emID = emID;
     }
 
     public String getDescripion() {
-        return Descripion;
+        return descripion;
     }
 
     public void setDescripion(String descripion) {
-        Descripion = descripion;
+        this.descripion = descripion;
     }
 
     public Double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(Double price) {
-        Price = price;
+        this.price = price;
     }
 
     @Override
     public String toString() {
         return "ServiceTm{" +
-                "SerID='" + SerID + '\'' +
-                ", EMID='" + EMID + '\'' +
-                ", Descripion='" + Descripion + '\'' +
-                ", Price=" + Price +
+                "serID='" + serID + '\'' +
+                ", emID='" + emID + '\'' +
+                ", descripion='" + descripion + '\'' +
+                ", price=" + price +
                 '}';
     }
 }

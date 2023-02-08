@@ -2,7 +2,7 @@ package lk.ijse.computershop.dao.custom.impl;
 
 import lk.ijse.computershop.dao.SQLUtil;
 import lk.ijse.computershop.dao.custom.SupOrderDetailDAO;
-import lk.ijse.computershop.to.SupOrderDetail;
+import lk.ijse.computershop.entity.SupOrderDetail;
 import java.sql.SQLException;
 import java.util.ArrayList;
 

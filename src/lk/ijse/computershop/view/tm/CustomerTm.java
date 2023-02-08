@@ -1,62 +1,60 @@
 package lk.ijse.computershop.view.tm;
 
 public class CustomerTm {
-    private String ID;
-    private String Name;
-    private String Address;
-    private String Contact;
-
-    public CustomerTm(String ID, String name, String address, String contact) {
-        this.ID = ID;
-        Name = name;
-        Address = address;
-        Contact = contact;
-    }
+    private String id;
+    private String name;
+    private String address;
+    private String contact;
 
     public CustomerTm() {
     }
 
-    public String getID() {
-        return ID;
+    public CustomerTm(String id, String name, String address, String contact) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.contact = contact;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getContact() {
-        return Contact;
+        return contact;
     }
 
     public void setContact(String contact) {
-        Contact = contact;
+        this.contact = contact;
     }
 
     @Override
     public String toString() {
         return "CustomerTm{" +
-                "ID='" + ID + '\'' +
-                ", Name='" + Name + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Contact='" + Contact + '\'' +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", contact='" + contact + '\'' +
                 '}';
     }
-
-
 }

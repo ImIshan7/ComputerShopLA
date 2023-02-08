@@ -1,6 +1,6 @@
 package lk.ijse.computershop.entity;
 
-import java.sql.Date;
+import java.util.ArrayList;
 
 public class Orders {
     private String OrderID;
@@ -8,14 +8,17 @@ public class Orders {
     private String Description;
     private java.sql.Date Date;
 
+    private ArrayList<OrderDetail> orderDetails;
+
     public Orders() {
     }
 
-    public Orders(String orderID, String cusID, String description, java.sql.Date date) {
+    public Orders(String orderID, String cusID, String description, java.sql.Date date, ArrayList<OrderDetail> orderDetails) {
         OrderID = orderID;
         CusID = cusID;
         Description = description;
         Date = date;
+        this.orderDetails = orderDetails;
     }
 
     public String getOrderID() {
@@ -50,6 +53,14 @@ public class Orders {
         Date = date;
     }
 
+    public ArrayList<OrderDetail> getOrderDetails() {
+        return orderDetails;
+    }
+
+    public void setOrderDetails(ArrayList<OrderDetail> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
     @Override
     public String toString() {
         return "Orders{" +
@@ -57,6 +68,7 @@ public class Orders {
                 ", CusID='" + CusID + '\'' +
                 ", Description='" + Description + '\'' +
                 ", Date=" + Date +
+                ", orderDetails=" + orderDetails +
                 '}';
     }
 }
