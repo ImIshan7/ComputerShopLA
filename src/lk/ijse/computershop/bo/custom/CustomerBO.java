@@ -16,5 +16,8 @@ public interface CustomerBO extends SuperBO {
     public CustomerDTO searchCustomer(String id) throws SQLException, ClassNotFoundException;
     public boolean deleteCustomer(String CusID) throws SQLException, ClassNotFoundException;
     public String generateNewID() throws SQLException, ClassNotFoundException;
+
+    public ArrayList<String> loadCusIDs() throws SQLException, ClassNotFoundException;
+
 }
 

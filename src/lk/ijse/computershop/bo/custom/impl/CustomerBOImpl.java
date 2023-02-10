@@ -42,4 +42,9 @@ public class CustomerBOImpl implements CustomerBO {
     public String generateNewID() throws SQLException, ClassNotFoundException {
         return customerDAO.generateNewID();
     }
+
+    @Override
+    public ArrayList<String> loadCusIDs() throws SQLException, ClassNotFoundException {
+        return customerDAO.loadCusIDs();
+    }
 }

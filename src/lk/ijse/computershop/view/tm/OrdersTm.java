@@ -1,57 +1,86 @@
 package lk.ijse.computershop.view.tm;
 
+import javafx.scene.control.Button;
+
 public class OrdersTm {
-    private String OrderID;
-    private String CusID;
-    private String Description;
-    private String Date;
+    private String prdID;
+    private String description;
+    private double unit_Price;
+    private int order_QTY;
+    private double total;
+    private Button option;
 
-    public OrdersTm(String orderID, String cusID, String description, String date) {
-        OrderID = orderID;
-        CusID = cusID;
-        Description = description;
-        Date = date;
+    public OrdersTm() {
     }
 
-    public String getOrderID() {
-        return OrderID;
+    public OrdersTm(String prdID, String description, double unit_Price, int order_QTY, double total, Button option) {
+        this.prdID = prdID;
+        this.description = description;
+        this.unit_Price = unit_Price;
+        this.order_QTY = order_QTY;
+        this.total = total;
+        this.option = option;
     }
 
-    public void setOrderID(String orderID) {
-        OrderID = orderID;
+    public String getPrdID() {
+        return prdID;
     }
 
-    public String getCusID() {
-        return CusID;
-    }
-
-    public void setCusID(String cusID) {
-        CusID = cusID;
+    public void setPrdID(String prdID) {
+        this.prdID = prdID;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-    public String getDate() {
-        return Date;
+    public double getUnit_Price() {
+        return unit_Price;
     }
 
-    public void setDate(String date) {
-        Date = date;
+    public void setUnit_Price(double unit_Price) {
+        this.unit_Price = unit_Price;
+    }
+
+    public int getOrder_QTY() {
+        return order_QTY;
+    }
+
+    public void setOrder_QTY(int order_QTY) {
+        this.order_QTY = order_QTY;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Button getOption() {
+        return option;
+    }
+
+    public void setOption(Button option) {
+        this.option = option;
     }
 
     @Override
     public String toString() {
         return "OrdersTm{" +
-                "OrderID='" + OrderID + '\'' +
-                ", CusID='" + CusID + '\'' +
-                ", Description='" + Description + '\'' +
-                ", Date='" + Date + '\'' +
+                "prdID='" + prdID + '\'' +
+                ", description='" + description + '\'' +
+                ", unit_Price=" + unit_Price +
+                ", order_QTY=" + order_QTY +
+                ", total=" + total +
+                ", option=" + option +
                 '}';
     }
+
+
 }

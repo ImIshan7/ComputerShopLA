@@ -69,7 +69,9 @@ public class ProductController {
         ColName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         ColPrice.setCellValueFactory(new PropertyValueFactory<>("Unit_Price"));
         ColDESC.setCellValueFactory(new PropertyValueFactory<>("Description"));
-        ColQTY.setCellValueFactory(new PropertyValueFactory<>("QTY"));
+        ColQTY.setCellValueFactory(new PropertyValueFactory<>("Qty"));
+
+
 
 
         ArrayList arrayList = productBO.getAllProduct();

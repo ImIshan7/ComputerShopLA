@@ -2,27 +2,27 @@ package lk.ijse.computershop.entity;
 
 public class Employ {
 
-     private String emID;
-     private String name;
-     private String address;
-     private String contact;
+    private String id;
+    private String name;
+    private String address;
+    private String contact;
 
     public Employ() {
     }
 
-    public Employ(String eMID, String name, String address, String contact) {
-        this.emID = eMID;
+    public Employ(String id, String name, String address, String contact) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.contact = contact;
     }
 
-    public String geteMID() {
-        return emID;
+    public String getId() {
+        return id;
     }
 
-    public void seteMID(String eMID) {
-        this.emID = eMID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,7 +52,7 @@ public class Employ {
     @Override
     public String toString() {
         return "Employ{" +
-                "eMID='" + emID + '\'' +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +

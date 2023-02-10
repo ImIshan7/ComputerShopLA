@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class ProductDAOImpl implements ProductDAO {
     @Override
     public ArrayList getAll() throws SQLException, ClassNotFoundException {
-        String sql="SELECT * FROM Product";
+        String sql="SELECT * FROM Product;" ;
 //        ResultSet resultSet=CrudUtil.execute(sql);
         ResultSet resultSet=SQLUtil.execute(sql);
         ArrayList<ProductTm> arrayList=new ArrayList();
@@ -50,6 +50,11 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
         return SQLUtil.execute("DELETE FROM Product WHERE PrdID= ?",id);
     }
@@ -78,5 +83,20 @@ public class ProductDAOImpl implements ProductDAO {
         return null;
     }
 
+    @Override
+    public ArrayList<String> loadPrdIDs() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT PrdID FROM Product";
+//        ResultSet result = CrudUtil.execute(sql);
+        ResultSet result = SQLUtil.execute(sql);
+
+        ArrayList<String> iIDList = new ArrayList<>();
+
+        while (result.next()) {
+            iIDList.add(result.getString(1));
+        }
+        return iIDList;
     }
+    }
+
+
 

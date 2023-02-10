@@ -12,6 +12,15 @@ public class SupplierDTO {
     public SupplierDTO() {
     }
 
+    public SupplierDTO(String supid, String name, String address, String brand, Double unit_Price, int qty) {
+        this.supid = supid;
+        this.name = name;
+        this.address = address;
+        this.brand = brand;
+        this.unit_Price = unit_Price;
+        this.qty = qty;
+    }
+
     public SupplierDTO(String supid, String name, String address, String brand) {
         this.supid = supid;
         this.name = name;

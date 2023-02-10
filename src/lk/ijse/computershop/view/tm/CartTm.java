@@ -4,83 +4,83 @@ import javafx.scene.control.Button;
 
 public class CartTm {
 
-    private String PrdID;
-    private String Description;
-    private double Unit_Price;
-    private int Order_QTY;
-    private double Total;
-    private Button Option;
+    private String prdID;
+    private String description;
+    private double unit_Price;
+    private int order_QTY;
+    private double total;
+    private Button option;
 
     public CartTm() {
 
     }
 
     public CartTm(String prdID, String description, double unit_Price, int order_QTY, double total, Button option) {
-        PrdID = prdID;
-        Description = description;
-        Unit_Price = unit_Price;
-        Order_QTY = order_QTY;
-        Total = total;
-        Option = option;
+        this.prdID = prdID;
+        this.description = description;
+        this.unit_Price = unit_Price;
+        this.order_QTY = order_QTY;
+        this.total = total;
+        this.option = option;
     }
 
     public String getPrdID() {
-        return PrdID;
+        return prdID;
     }
 
     public void setPrdID(String prdID) {
-        PrdID = prdID;
+        this.prdID = prdID;
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     public double getUnit_Price() {
-        return Unit_Price;
+        return unit_Price;
     }
 
     public void setUnit_Price(double unit_Price) {
-        Unit_Price = unit_Price;
+        this.unit_Price = unit_Price;
     }
 
     public int getOrder_QTY() {
-        return Order_QTY;
+        return order_QTY;
     }
 
     public void setOrder_QTY(int order_QTY) {
-        Order_QTY = order_QTY;
+        this.order_QTY = order_QTY;
     }
 
     public double getTotal() {
-        return Total;
+        return total;
     }
 
     public void setTotal(double total) {
-        Total = total;
+        this.total = total;
     }
 
     public Button getOption() {
-        return Option;
+        return option;
     }
 
     public void setOption(Button option) {
-        Option = option;
+        this.option = option;
     }
 
     @Override
     public String toString() {
         return "CartTm{" +
-                "PrdID='" + PrdID + '\'' +
-                ", Description='" + Description + '\'' +
-                ", Unit_Price=" + Unit_Price +
-                ", Order_QTY=" + Order_QTY +
-                ", Total=" + Total +
-                ", Option=" + Option +
+                "prdID='" + prdID + '\'' +
+                ", description='" + description + '\'' +
+                ", unit_Price=" + unit_Price +
+                ", order_QTY=" + order_QTY +
+                ", total=" + total +
+                ", option=" + option +
                 '}';
     }
 }

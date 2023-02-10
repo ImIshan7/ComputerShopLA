@@ -11,7 +11,7 @@ public class EmployModel {
     public static boolean save(Employ employ) throws SQLException, ClassNotFoundException {
 
         String sql = "INSERT INTO Employ VALUES (?, ?, ?, ?)";
-        return CrudUtil.execute(sql, employ.geteMID(), employ.getName(), employ.getAddress(), employ.getContact());
+        return CrudUtil.execute(sql, employ.getId(), employ.getName(), employ.getAddress(), employ.getContact());
     }
 
     public static Employ search(String EMID) throws SQLException, ClassNotFoundException {

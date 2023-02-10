@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class OrderDetailDAOImpl implements OrderDetailDAO {
 
-    public ArrayList<OrderDetail> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList getAll() throws SQLException, ClassNotFoundException {
         return null;
     }
 

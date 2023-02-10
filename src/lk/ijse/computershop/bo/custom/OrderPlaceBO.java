@@ -4,7 +4,7 @@ import lk.ijse.computershop.bo.SuperBO;
 import lk.ijse.computershop.dto.CustomerDTO;
 import lk.ijse.computershop.dto.OrdersDTO;
 import lk.ijse.computershop.dto.ProductDTO;
-
+import rex.utils.S;
 
 
 import java.sql.SQLException;
@@ -18,4 +18,7 @@ public interface OrderPlaceBO extends SuperBO {
     public ArrayList<CustomerDTO> getAllCustomers() throws SQLException, ClassNotFoundException;
     public ArrayList<ProductDTO> getAllProduct() throws SQLException, ClassNotFoundException;
     public boolean orderPlace(OrdersDTO dto) throws SQLException, ClassNotFoundException;
+
+    public ProductDTO findProduct(String PrdID)throws SQLException, ClassNotFoundException;
+    public String generateNextOID() throws SQLException, ClassNotFoundException;
 }

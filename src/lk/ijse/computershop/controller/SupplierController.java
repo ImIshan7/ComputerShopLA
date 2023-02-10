@@ -212,7 +212,7 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
 
 
         try {
-            boolean isAdded = supplierBO.addSupplier(new SupplierDTO(SupID,Name,Address,Brand));
+            boolean isAdded = supplierBO.addSupplier(new SupplierDTO(SupID,Name,Address,Brand,Unit_Price,QTY));
 
 
             if (isAdded) {
@@ -312,7 +312,7 @@ SupplierBO supplierBO = (SupplierBO) BOFactory.getBoFactory().getBO(BOFactory.Bo
         int QTY = Integer.parseInt(txtQTY.getText());
 
 
-        boolean isUpdate = supplierBO.updateSupplier(new SupplierDTO(SupID,Name,Address,Brand));
+        boolean isUpdate = supplierBO.updateSupplier(new SupplierDTO(SupID,Name,Address,Brand,Unit_Price,QTY));
 
 
         if (isUpdate) {

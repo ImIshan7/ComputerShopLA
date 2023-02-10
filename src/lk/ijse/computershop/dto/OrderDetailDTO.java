@@ -1,61 +1,65 @@
 package lk.ijse.computershop.dto;
 
+import javafx.scene.control.Button;
+
 public class OrderDetailDTO {
 
-    private String OrderID;
-    private String PrdID;
-    private double Price;
-    private int QTY;
+    private String orderID;
+    private String prdID;
+    private double price;
+    private int qty;
 
     public OrderDetailDTO() {
     }
 
-    public OrderDetailDTO(String orderID, String prdID, double price, int QTY) {
-        OrderID = orderID;
-        PrdID = prdID;
-        Price = price;
-        this.QTY = QTY;
+    public OrderDetailDTO(String orderID, String prdID,double price,int qty) {
+        this.orderID = orderID;
+        this.prdID = prdID;
+        this.price = price;
+        this.qty = qty;
     }
 
+
+
     public String getOrderID() {
-        return OrderID;
+        return orderID;
     }
 
     public void setOrderID(String orderID) {
-        OrderID = orderID;
+        this.orderID = orderID;
     }
 
     public String getPrdID() {
-        return PrdID;
+        return prdID;
     }
 
     public void setPrdID(String prdID) {
-        PrdID = prdID;
+        this.prdID = prdID;
     }
 
     public double getPrice() {
-        return Price;
+        return price;
     }
 
     public void setPrice(double price) {
-        Price = price;
+        this.price = price;
     }
 
-    public int getQTY() {
-        return QTY;
+    public int getQty() {
+        return qty;
     }
 
-    public void setQTY(int QTY) {
-        this.QTY = QTY;
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     @Override
     public String toString() {
         return "OrderDetailDTO{" +
-                "OrderID='" + OrderID + '\'' +
-                ", PrdID='" + PrdID + '\'' +
-                ", Price=" + Price +
-                ", QTY=" + QTY +
+                "orderID='" + orderID + '\'' +
+                ", prdID='" + prdID + '\'' +
+                ", price=" + price +
+                ", qty=" + qty +
                 '}';
     }
 }

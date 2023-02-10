@@ -40,4 +40,9 @@ public class ProductBOImpl implements ProductBO {
     public String generateNewCode() throws SQLException, ClassNotFoundException {
         return productDAO.generateNewID();
     }
+
+    @Override
+    public ArrayList<String> loadPrdIDs() throws SQLException, ClassNotFoundException {
+        return productDAO.loadPrdIDs();
+    }
 }

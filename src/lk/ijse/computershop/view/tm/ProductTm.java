@@ -2,71 +2,71 @@ package lk.ijse.computershop.view.tm;
 
 public class ProductTm {
 
-    private String prdID;
-    private String name;
-    private Double unit_Price;
-    private String description;
-    private int qty;
+    private String PrdID;
+    private String Name;
+    private Double Unit_Price;
+    private String Description;
+    private int Qty;
 
     public ProductTm() {
     }
 
     public ProductTm(String prdID, String name, Double unit_Price, String description, int qty) {
-        this.prdID = prdID;
-        this.name = name;
-        this.unit_Price = unit_Price;
-        this.description = description;
-        this.qty = qty;
+        PrdID = prdID;
+        Name = name;
+        Unit_Price = unit_Price;
+        Description = description;
+        Qty = qty;
     }
 
     public String getPrdID() {
-        return prdID;
+        return PrdID;
     }
 
     public void setPrdID(String prdID) {
-        this.prdID = prdID;
+        PrdID = prdID;
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        Name = name;
     }
 
     public Double getUnit_Price() {
-        return unit_Price;
+        return Unit_Price;
     }
 
     public void setUnit_Price(Double unit_Price) {
-        this.unit_Price = unit_Price;
+        Unit_Price = unit_Price;
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        Description = description;
     }
 
     public int getQty() {
-        return qty;
+        return Qty;
     }
 
     public void setQty(int qty) {
-        this.qty = qty;
+        Qty = qty;
     }
 
     @Override
     public String toString() {
         return "ProductTm{" +
-                "prdID='" + prdID + '\'' +
-                ", name='" + name + '\'' +
-                ", unit_Price=" + unit_Price +
-                ", description='" + description + '\'' +
-                ", qty=" + qty +
+                "PrdID='" + PrdID + '\'' +
+                ", Name='" + Name + '\'' +
+                ", Unit_Price=" + Unit_Price +
+                ", Description='" + Description + '\'' +
+                ", Qty=" + Qty +
                 '}';
     }
 }

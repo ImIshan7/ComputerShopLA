@@ -77,7 +77,7 @@ public class EmployController {
 
         obList.clear();
 
-        ColEMID.setCellValueFactory(new PropertyValueFactory<>("emID"));
+        ColEMID.setCellValueFactory(new PropertyValueFactory<>("id"));
         ColName.setCellValueFactory(new PropertyValueFactory<>("name"));
         ColAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
         ColContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
@@ -96,11 +96,11 @@ public class EmployController {
 
         tblEmployee.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                selectedID = newValue.geteMID();
+                selectedID = newValue.getId();
 
-                System.out.println(newValue.geteMID());
+                System.out.println(newValue.getId());
 
-                txtID.setText(newValue.geteMID());
+                txtID.setText(newValue.getId());
                 txtName.setText(newValue.getName());
                 txtAddress.setText(newValue.getAddress());
                 txtContact.setText(newValue.getContact());
@@ -201,7 +201,7 @@ public class EmployController {
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.YES) {
 
-            String EMID = tblEmployee.getSelectionModel().getSelectedItem().geteMID();
+            String EMID = tblEmployee.getSelectionModel().getSelectedItem().getId();
             boolean isDeleted = employBO.deleteEmploy(EMID);
 
             if (isDeleted) {
@@ -225,7 +225,7 @@ public class EmployController {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
-                if (employTm.geteMID().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                if (employTm.getId().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;
                 } else if (employTm.getName().toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true;

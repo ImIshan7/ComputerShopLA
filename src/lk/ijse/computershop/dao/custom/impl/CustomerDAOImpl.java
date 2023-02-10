@@ -56,6 +56,11 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
+    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+        return false;
+    }
+
+    @Override
     public boolean delete(String id) throws SQLException, ClassNotFoundException {
 
         return SQLUtil.execute("DELETE FROM Customer WHERE CusID= ?", id);
@@ -83,5 +88,19 @@ public class CustomerDAOImpl implements CustomerDAO {
             );
         }
         return null;
+    }
+
+    @Override
+    public ArrayList<String> loadCusIDs() throws SQLException, ClassNotFoundException {
+        String sql = "SELECT CusID FROM Customer";
+//        ResultSet result = CrudUtil.execute(sql);
+        ResultSet result = SQLUtil.execute(sql);
+
+        ArrayList<String> iIDList = new ArrayList<>();
+
+        while (result.next()) {
+            iIDList.add(result.getString(1));
+        }
+        return iIDList;
     }
 }

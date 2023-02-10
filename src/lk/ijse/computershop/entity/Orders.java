@@ -13,7 +13,7 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String orderID, String cusID, String description, java.sql.Date date, ArrayList<OrderDetail> orderDetails) {
+    public Orders(String orderID, String cusID, String description, java.sql.Date date) {
         OrderID = orderID;
         CusID = cusID;
         Description = description;

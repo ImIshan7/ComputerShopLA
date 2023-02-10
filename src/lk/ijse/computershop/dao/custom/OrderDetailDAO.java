@@ -6,6 +6,10 @@ import lk.ijse.computershop.entity.OrderDetail;
 import java.sql.SQLException;
 
 public interface OrderDetailDAO extends SuperDAO {
+   // boolean add(OrderDetail entity) throws SQLException, ClassNotFoundException;
+
+   // boolean add(OrderDetail entity) throws SQLException, ClassNotFoundException;
+
     boolean add(OrderDetail entity) throws SQLException, ClassNotFoundException;
 
     boolean update(OrderDetail entity) throws SQLException, ClassNotFoundException;

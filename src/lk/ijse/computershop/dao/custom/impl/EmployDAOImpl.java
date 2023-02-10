@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class EmployDAOImpl implements EmployDAO {
     @Override
     public ArrayList getAll() throws SQLException, ClassNotFoundException {
-        String sql="SELECT * FROM Employ;";
+        String sql="SELECT * FROM Employ";
 //        ResultSet resultSet=CrudUtil.execute(sql);
         ResultSet resultSet=SQLUtil.execute(sql);
         ArrayList<EmployTm> arrayList=new ArrayList();
@@ -25,12 +25,12 @@ public class EmployDAOImpl implements EmployDAO {
 
     @Override
     public boolean add(Employ entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("INSERT INTO Employ(EMID,Name,Address,Contact) VALUES(?,?,?,?)",entity.geteMID(),entity.getName(),entity.getAddress(),entity.getContact());
+        return SQLUtil.execute("INSERT INTO Employ(EMID,Name,Address,Contact) VALUES(?,?,?,?)",entity.getId(),entity.getName(),entity.getAddress(),entity.getContact());
     }
 
     @Override
     public boolean update(Employ entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute("UPDATE Employ set Name = ?, Address = ?,  Contact = ? WHERE EMID = ?",entity.getName(),entity.getAddress(),entity.getContact(),entity.geteMID());
+        return SQLUtil.execute("UPDATE Employ set Name = ?, Address = ?,  Contact = ? WHERE EMID = ?",entity.getName(),entity.getAddress(),entity.getContact(),entity.getId());
     }
 
     @Override
@@ -44,6 +44,11 @@ public class EmployDAOImpl implements EmployDAO {
         }else
             return "E00-001";
 
+    }
+
+    @Override
+    public boolean exist(String id) throws SQLException, ClassNotFoundException {
+        return false;
     }
 
     @Override
